@@ -2,8 +2,8 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import landingImage from '/landing.png';
-import mirrorTechImage from '/mirror-tech.jpg';
+import landingImage from '../assets/landing.png';
+import mirrorTechImage from '../assets/mirror-tech.jpg';
 
 interface Benefit {
   icon: string;
