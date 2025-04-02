@@ -2,6 +2,8 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import landingImage from '/landing.png';
+import mirrorTechImage from '/mirror-tech.jpg';
 
 interface Benefit {
   icon: string;
@@ -95,7 +97,7 @@ const Home = () => {
         {/* Background Image */}
         <div className="absolute inset-0">
           <img 
-            src="/landing.png" 
+            src={landingImage}
             alt="Fashion Background" 
             className="w-full h-full object-cover"
           />
@@ -215,9 +217,9 @@ const Home = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
             {/* Left Column - Image */}
-            <div className="relative overflow-hidden rounded-lg h-[600px]">
+            <div className="relative overflow-hidden rounded-lg h-[400px]">
               <img 
-                src="/chatgpt.png" 
+                src={mirrorTechImage}
                 alt="Vault Mirror Technology" 
                 className="w-full h-full object-cover object-center"
               />
