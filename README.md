@@ -100,4 +100,4 @@ This project is proprietary software. All rights reserved.
 
 ## Contact
 
-Join our waitlist at [vault.web](https://transcendent-wisp-fe23a9.netlify.app/waitlist) for early access and updates.
+Join our waitlist at [vault.web]([https://transcendent-wisp-fe23a9.netlify.app/waitlist](https://vault-l5kf7srwv-talia-kusmireks-projects.vercel.app/?view=home)) for early access and updates.
