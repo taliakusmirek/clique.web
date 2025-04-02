@@ -1,6 +1,6 @@
 # Vault - Your AI Wardrobe Mirror
 
-A revolutionary smart wardrobe technology platform that combines AI-powered fashion recommendations with virtual try-on capabilities.
+The website for a revolutionary smart wardrobe technology mirror that combines AI-powered fashion recommendations with virtual try-on capabilities.
 
 ## Features
 
