@@ -1,54 +1,103 @@
-# React + TypeScript + Vite
+# Vault - Your AI Wardrobe Mirror
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A revolutionary smart wardrobe technology platform that combines AI-powered fashion recommendations with virtual try-on capabilities.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### For Home Users
+- 🪞 Smart Mirror Technology
+- 👕 AI-Powered Wardrobe Management
+- 🎯 Personalized Style Recommendations
+- 🔄 Virtual Try-On Experience
 
-## Expanding the ESLint configuration
+### For Retail Partners
+- 📊 Real-time Analytics
+- 🎯 Smart Inventory Management
+- 🌟 Enhanced Customer Experience
+- 📱 Omnichannel Integration
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Tech Stack
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+- **Frontend:**
+  - React 18
+  - TypeScript
+  - Tailwind CSS
+  - Framer Motion
+  - Vite
+
+- **Styling:**
+  - Modern, minimalist design
+  - Purple holographic theme
+  - Responsive layouts
+  - Smooth animations
+
+- **Deployment:**
+  - Netlify hosting
+  - Netlify Forms for waitlist
+  - Continuous deployment
+
+## Getting Started
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/taliakusmirek/vault.web.git
+   cd vault.web
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+3. **Start development server:**
+   ```bash
+   npm run dev
+   ```
+
+4. **Build for production:**
+   ```bash
+   npm run build
+   ```
+
+## Project Structure
+
+```
+vault.web/
+├── public/          # Static assets
+├── src/
+│   ├── components/  # Reusable UI components
+│   ├── pages/       # Page components
+│   ├── assets/      # Images and other assets
+│   └── styles/      # Global styles
+└── scripts/         # Build and utility scripts
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Key Features
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Home Experience
+- Smart wardrobe organization
+- AI-powered outfit recommendations
+- Virtual try-on technology
+- Weather-based suggestions
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+### Retail Solutions
+- Inventory management
+- Customer analytics
+- Virtual shopping experience
+- Omnichannel integration
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## License
+
+This project is proprietary software. All rights reserved.
+
+## Contact
+
+Join our waitlist at [vault.web](https://transcendent-wisp-fe23a9.netlify.app/waitlist) for early access and updates.
