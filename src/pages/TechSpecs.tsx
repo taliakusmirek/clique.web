@@ -71,25 +71,39 @@ const TechSpecs = () => {
   ];
 
   return (
-    <div className="min-h-screen pt-20 pb-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-obsidian via-ai-purple-dark/20 to-obsidian">
       <div className="max-w-7xl mx-auto">
-        <motion.h1 
-          className="section-title text-center"
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
+          className="text-center mb-16"
         >
-          Technical Specifications
-        </motion.h1>
-
-        <motion.p 
-          className="section-subtitle text-center"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
-          Discover how Vault transforms your wardrobe experience
-        </motion.p>
+          <motion.p 
+            className="text-sm text-white/60 mb-4 font-mono tracking-widest"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            TECHNICAL SPECIFICATIONS
+          </motion.p>
+          <motion.h1 
+            className="text-4xl md:text-5xl font-bold text-white mb-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            Built for Performance
+          </motion.h1>
+          <motion.p 
+            className="text-xl text-cool-gray"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            Discover how Vault transforms your wardrobe experience
+          </motion.p>
+        </motion.div>
 
         {/* Features Grid */}
         <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -102,7 +116,7 @@ const TechSpecs = () => {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <h2 className={`text-2xl font-bold ${category.color}`}>
+              <h2 className={`text-2xl font-bold ${category.color} mb-6`}>
                 {category.title}
               </h2>
               
@@ -110,11 +124,12 @@ const TechSpecs = () => {
                 {category.items.map((item, index) => (
                   <motion.div
                     key={item.title}
-                    className="bg-obsidian/50 p-6 rounded-lg border border-ai-cyan/20"
+                    className="bg-white/5 backdrop-blur-sm p-6 rounded-lg border border-white/10 hover:border-white/20 transition-all duration-300 hover:shadow-lg hover:shadow-white/5"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: index * 0.2 }}
                     viewport={{ once: true }}
+                    whileHover={{ scale: 1.02 }}
                   >
                     <h3 className="text-xl font-semibold text-white mb-2">
                       {item.title}
@@ -122,7 +137,7 @@ const TechSpecs = () => {
                     <p className="text-ai-cyan font-medium mb-2">
                       {item.spec}
                     </p>
-                    <p className="text-cool-gray">
+                    <p className="text-white/60">
                       {item.description}
                     </p>
                   </motion.div>
@@ -134,18 +149,20 @@ const TechSpecs = () => {
 
         {/* Interactive Diagram */}
         <motion.div 
-          className="mt-20 relative h-[400px] bg-obsidian/50 rounded-lg border border-ai-cyan/20 overflow-hidden"
+          className="mt-20 relative h-[400px] bg-white/5 backdrop-blur-sm rounded-lg border border-white/10 overflow-hidden group hover:border-white/20 transition-all duration-300"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
+          whileHover={{ scale: 1.02 }}
         >
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="text-cool-gray text-center">
-              <p className="text-lg mb-4">Your Digital Closet Experience</p>
-              <p className="text-sm">Explore how Vault organizes and enhances your wardrobe</p>
+            <div className="text-center">
+              <p className="text-xl font-semibold text-white mb-4">Your Digital Closet Experience</p>
+              <p className="text-white/60">Explore how Vault organizes and enhances your wardrobe</p>
             </div>
           </div>
+          <div className="absolute inset-0 bg-gradient-to-r from-[#66909E]/0 via-[#66909E]/10 to-[#66909E]/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
         </motion.div>
       </div>
     </div>

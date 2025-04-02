@@ -22,8 +22,8 @@ interface ContentType {
 
 const pageContent: ContentType = {
   home: {
-    title: 'Your AI Wardrobe Mirror <br /> <span class="text-ai-purple/80">is here.</span>',
-    subtitle: 'Store. Style. Share. Shop.',
+    title: 'Wear the Future. <br /> <span class="text-ai-purple/80">The Vault Mirror</span>',
+    subtitle: 'For those who dare to redefine style.',
     benefits: [
       {
         icon: '✨',
@@ -39,6 +39,11 @@ const pageContent: ContentType = {
         icon: '🔄',
         title: 'Virtual Try-On',
         description: 'See how clothes will look on you before you buy with our advanced AR technology.'
+      },
+      {
+        icon: '🤖',
+        title: 'AI Stylist',
+        description: 'Your personal AI fashion advisor available 24/7, learning and evolving with your style preferences.'
       }
     ]
   },
@@ -146,8 +151,6 @@ const Home = () => {
     ];
   };
 
-  const icons = getFloatingIcons();
-
   const getHeroContent = (): ContentSection => {
     return activeToggle === 'home' ? pageContent.home : pageContent.retail;
   };
@@ -158,288 +161,278 @@ const Home = () => {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-obsidian via-ai-purple-dark/30 to-ai-purple-dark/50 z-10" />
+        {/* Background Image */}
         <div className="absolute inset-0">
-          <div className="w-full h-full bg-gradient-to-b from-obsidian via-ai-purple-dark/20 to-ai-purple-dark/40" />
-          {/* Mirror reflection effect */}
-          <div className="w-full h-full bg-mirror-reflection animate-pulse" />
+          <img 
+            src="/landing.png" 
+            alt="Fashion Background" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#66909E]/20 to-[#344B53]/40" />
         </div>
-        
-        {/* Floating Icons */}
-        <div className="absolute inset-0 z-20">
-          {icons.map((item, index) => {
-            // Calculate positions in a circle around the header
-            const radius = 35; // Radius for circle
-            const angle = (index * (360 / icons.length)) * (Math.PI / 180);
-            const x = 50 + Math.cos(angle) * radius; // 50% is center
-            const y = 50 + Math.sin(angle) * radius; // Center vertically
-            
-            return (
-              <motion.div
-                key={item.id}
-                className="absolute cursor-pointer transform -translate-x-1/2 -translate-y-1/2"
-                style={{
-                  left: `${x}%`,
-                  top: `${y}%`,
-                  zIndex: 40
-                }}
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{ 
-                  opacity: 1, 
-                  scale: 1,
-                  rotate: [0, 360]
-                }}
-                transition={{
-                  duration: 0.8,
-                  delay: index * 0.1,
-                  type: "spring",
-                  stiffness: 100
-                }}
-                whileHover={{ 
-                  scale: 1.3,
-                  rotate: 0,
-                  filter: 'drop-shadow(0 0 10px rgba(160,32,240,0.5))'
-                }}
-              >
-                <div className="text-6xl select-none">
-                  {item.icon}
-                </div>
-              </motion.div>
-            );
-          })}
-        </div>
-        
+
+        {/* Center Text */}
         <div className="relative z-30 text-center px-4 sm:px-6 lg:px-8">
           <motion.h1
-            className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-8"
-            dangerouslySetInnerHTML={{ __html: currentContent.title }}
+            className="text-6xl sm:text-7xl md:text-8xl font-bold text-white tracking-wide"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-          />
-          <motion.p
-            className="text-xl sm:text-2xl text-cool-gray mb-12"
+          >
+            Style has evolved.
+          </motion.h1>
+          <motion.div
+            className="mt-4 text-xl sm:text-2xl text-white/80"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            {currentContent.subtitle}
-          </motion.p>
-          
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="mt-8"
-          >
-            <Link to="/waitlist" className="btn-primary text-lg animate-glow">
-              Join the Future
-            </Link>
+            Transform Your Wardrobe with AI
           </motion.div>
+        </div>
+
+        {/* Corner Elements */}
+        <div className="absolute top-32 left-8 text-white/80 text-sm">
+          Innovate
+        </div>
+        <div className="absolute top-32 right-8 text-white/80 text-sm">
+          Elevate
+        </div>
+        
+        {/* Binary Code */}
+        <div className="absolute top-[40%] left-8 text-white/60 text-2xl font-mono">
+          (01)
+        </div>
+        <div className="absolute top-[40%] right-8 text-white/60 text-xl font-mono">
+          0101110001
+        </div>
+
+        {/* Bottom Taglines */}
+        <div className="absolute bottom-32 left-8 text-white/80 text-sm max-w-[200px]">
+          Where AI meets your wardrobe
+        </div>
+        <div className="absolute bottom-32 right-8 text-white/80 text-sm text-right max-w-[200px]">
+          The future of personal styling
+        </div>
+      </section>
+
+      {/* Promise Statement Section */}
+      <section className="py-32 px-4 sm:px-6 lg:px-8 bg-white text-obsidian relative overflow-hidden">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+            {/* Left Column */}
+            <div>
+              <motion.p 
+                className="text-sm text-obsidian/60 mb-6 font-mono tracking-widest"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+              >
+                (02) THE FUTURE OF STYLE
+              </motion.p>
+              <motion.h2 
+                className="text-4xl md:text-5xl font-display font-bold leading-tight mb-8"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                viewport={{ once: true }}
+              >
+                Not just a mirror.<br />An AI stylist.<br />Your future self.
+              </motion.h2>
+            </div>
+            
+            {/* Right Column */}
+            <div className="flex items-center">
+              <motion.p 
+                className="text-xl md:text-2xl text-obsidian/80 leading-relaxed"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                viewport={{ once: true }}
+              >
+                Where artificial intelligence meets personal style. The Vault Mirror transforms your daily routine into a curated fashion experience, powered by advanced AI that learns and evolves with you.
+              </motion.p>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Benefits Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-ai-purple-dark/30 to-obsidian">
+      <section className="py-32 px-4 sm:px-6 lg:px-8 bg-obsidian text-white">
         <div className="max-w-7xl mx-auto">
-          <motion.h2 
-            className="section-title text-center"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            Why Choose Vault?
-          </motion.h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-            {currentContent.benefits.map((benefit: Benefit, index: number) => (
-              <motion.div 
-                key={index}
-                className="bg-obsidian/50 p-6 rounded-lg border border-ai-purple/20 hover:shadow-[0_0_15px_rgba(160,32,240,0.3)] transition-all duration-300"
+          <div className="text-center mb-16">
+            <motion.p 
+              className="text-sm text-white/60 mb-4 font-mono tracking-widest"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              (03) KEY FEATURES
+            </motion.p>
+            <motion.h2 
+              className="text-4xl md:text-5xl font-display font-bold"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              AI-powered innovation
+            </motion.h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+            {/* Left Column - Image */}
+            <div className="relative overflow-hidden rounded-lg h-[600px]">
+              <img 
+                src="/chatgpt.png" 
+                alt="Vault Mirror Technology" 
+                className="w-full h-full object-cover object-center"
+              />
+              <div className="absolute inset-0 bg-gradient-to-b from-[#66909E]/20 to-[#344B53]/40" />
+              
+              {/* Overlay Text */}
+              <div className="absolute bottom-8 left-8">
+                <motion.h2 
+                  className="text-4xl md:text-5xl font-display font-bold leading-tight mb-4"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8 }}
+                  viewport={{ once: true }}
+                >
+                  AI-powered.<br />
+                  Style redefined.
+                </motion.h2>
+              </div>
+
+
+            </div>
+            
+            {/* Right Column - Tech Features */}
+            <div className="flex flex-col justify-center">
+              <motion.p 
+                className="text-sm text-white/60 mb-6 font-mono tracking-widest"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 * (index + 1) }}
+                transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
-                whileHover={{ scale: 1.02 }}
               >
-                <div className="w-12 h-12 bg-ai-purple/20 rounded-full flex items-center justify-center mb-4">
-                  <div className="text-ai-purple text-2xl">
-                    {benefit.icon}
-                  </div>
+                REVOLUTIONARY SMART MIRROR
+              </motion.p>
+              
+              <motion.div
+                className="space-y-8"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                viewport={{ once: true }}
+              >
+                <p className="text-lg text-white/80 leading-relaxed">
+                  The Vault Mirror integrates cutting-edge AI technology to transform your daily styling experience. Our advanced computer vision system provides real-time outfit recommendations, virtual try-ons, and intelligent wardrobe management. Experience the future of personal styling, powered by artificial intelligence.
+                </p>
+                
+                <div className="grid grid-cols-2 gap-6 mt-8">
+                  {currentContent.benefits.map((benefit: Benefit, index: number) => (
+                    <motion.div 
+                      key={index}
+                      className="bg-white/5 backdrop-blur-sm p-6 rounded-lg border border-white/10 hover:border-white/20 transition-all duration-300 hover:shadow-lg hover:shadow-white/5 hover:-translate-y-1 pixel-corner"
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.8, delay: 0.2 * (index + 1) }}
+                      viewport={{ once: true }}
+                      whileHover={{ scale: 1.02 }}
+                    >
+                      <h3 className="text-lg font-semibold text-white mb-2">{benefit.title}</h3>
+                      <p className="text-white/60 text-sm">{benefit.description}</p>
+                    </motion.div>
+                  ))}
                 </div>
-                <h3 className="text-xl font-semibold text-white mb-2">{benefit.title}</h3>
-                <p className="text-cool-gray">{benefit.description}</p>
-                <motion.button 
-                  className="mt-4 text-ai-purple hover:text-white transition-colors"
-                  whileHover={{ x: 5 }}
-                >
-                  View Demo →
-                </motion.button>
               </motion.div>
-            ))}
+            </div>
           </div>
         </div>
       </section>
 
       {/* Tech Specs Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-obsidian via-ai-purple-dark/20 to-ai-purple-dark/30">
+      <section className="py-32 px-4 sm:px-6 lg:px-8 bg-white text-obsidian" id="tech-specs">
         <div className="max-w-7xl mx-auto">
-          <motion.h2 
-            className="section-title text-center mb-16"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            Technical Specifications
-          </motion.h2>
+          <div className="text-center mb-16">
+            <motion.p 
+              className="text-sm text-obsidian/60 mb-4 font-mono tracking-widest"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              (04) TECHNICAL SPECIFICATIONS
+            </motion.p>
+            <motion.h2 
+              className="text-4xl md:text-5xl font-display font-bold"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              Built for performance
+            </motion.h2>
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             {/* Hardware Specs */}
             <motion.div
-              className="bg-obsidian/50 p-8 rounded-lg border border-ai-purple/20 hover:shadow-[0_0_15px_rgba(160,32,240,0.2)]"
+              className="bg-obsidian/5 backdrop-blur-sm p-8 rounded-lg border border-obsidian/10 hover:border-obsidian/20 transition-all duration-300 hover:shadow-lg hover:shadow-obsidian/5 hover:-translate-y-1 pixel-border"
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <h3 className="text-2xl font-semibold text-white mb-6">Hardware</h3>
-              <ul className="space-y-4 text-cool-gray">
+              <h3 className="text-2xl font-display font-bold text-obsidian mb-6">Mirror Hardware</h3>
+              <ul className="space-y-4 text-obsidian/80">
                 <li className="flex items-start">
-                  <svg className="w-6 h-6 text-ai-purple mr-3 mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span>4K Ultra HD Display with Anti-Glare Coating</span>
+                  <span className="text-ai-purple mr-3">01.</span>
+                  <span>4K Anti-glare Display with True Color</span>
                 </li>
                 <li className="flex items-start">
-                  <svg className="w-6 h-6 text-ai-purple mr-3 mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span>Advanced Depth-Sensing Cameras</span>
+                  <span className="text-ai-purple mr-3">02.</span>
+                  <span>Depth-sensing Camera Array</span>
                 </li>
                 <li className="flex items-start">
-                  <svg className="w-6 h-6 text-ai-purple mr-3 mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span>Built-in LED Lighting System</span>
+                  <span className="text-ai-purple mr-3">03.</span>
+                  <span>Ambient Light Sensors</span>
                 </li>
                 <li className="flex items-start">
-                  <svg className="w-6 h-6 text-ai-purple mr-3 mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span>Motion and Gesture Sensors</span>
+                  <span className="text-ai-purple mr-3">04.</span>
+                  <span>Gesture Recognition System</span>
                 </li>
               </ul>
             </motion.div>
 
-            {/* Software Features */}
+            {/* Software Specs */}
             <motion.div
-              className="bg-obsidian/50 p-8 rounded-lg border border-ai-purple/20 hover:shadow-[0_0_15px_rgba(160,32,240,0.2)]"
+              className="bg-obsidian/5 backdrop-blur-sm p-8 rounded-lg border border-obsidian/10 hover:border-obsidian/20 transition-all duration-300 hover:shadow-lg hover:shadow-obsidian/5 hover:-translate-y-1 pixel-border"
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <h3 className="text-2xl font-semibold text-white mb-6">Software</h3>
-              <ul className="space-y-4 text-cool-gray">
+              <h3 className="text-2xl font-display font-bold text-obsidian mb-6">AI Features</h3>
+              <ul className="space-y-4 text-obsidian/80">
                 <li className="flex items-start">
-                  <svg className="w-6 h-6 text-ai-purple mr-3 mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span>Real-time Body Measurements</span>
+                  <span className="text-ai-purple mr-3">01.</span>
+                  <span>Real-time Style Analysis</span>
                 </li>
                 <li className="flex items-start">
-                  <svg className="w-6 h-6 text-ai-purple mr-3 mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span>AI-Powered Style Recommendations</span>
+                  <span className="text-ai-purple mr-3">02.</span>
+                  <span>Personalized Outfit Generation</span>
                 </li>
                 <li className="flex items-start">
-                  <svg className="w-6 h-6 text-ai-purple mr-3 mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span>Virtual Try-On Technology</span>
+                  <span className="text-ai-purple mr-3">03.</span>
+                  <span>Virtual Wardrobe Management</span>
                 </li>
                 <li className="flex items-start">
-                  <svg className="w-6 h-6 text-ai-purple mr-3 mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span>Cloud-Based Wardrobe Management</span>
-                </li>
-              </ul>
-            </motion.div>
-
-            {/* Integration Features */}
-            <motion.div
-              className="bg-obsidian/50 p-8 rounded-lg border border-ai-purple/20 hover:shadow-[0_0_15px_rgba(160,32,240,0.2)]"
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              viewport={{ once: true }}
-            >
-              <h3 className="text-2xl font-semibold text-white mb-6">Integrations</h3>
-              <ul className="space-y-4 text-cool-gray">
-                <li className="flex items-start">
-                  <svg className="w-6 h-6 text-ai-purple mr-3 mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span>E-commerce Platform Connectivity</span>
-                </li>
-                <li className="flex items-start">
-                  <svg className="w-6 h-6 text-ai-purple mr-3 mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span>Social Media Sharing</span>
-                </li>
-                <li className="flex items-start">
-                  <svg className="w-6 h-6 text-ai-purple mr-3 mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span>Calendar and Event Sync</span>
-                </li>
-                <li className="flex items-start">
-                  <svg className="w-6 h-6 text-ai-purple mr-3 mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span>Weather Integration</span>
-                </li>
-              </ul>
-            </motion.div>
-
-            {/* Security Features */}
-            <motion.div
-              className="bg-obsidian/50 p-8 rounded-lg border border-ai-purple/20 hover:shadow-[0_0_15px_rgba(160,32,240,0.2)]"
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              viewport={{ once: true }}
-            >
-              <h3 className="text-2xl font-semibold text-white mb-6">Security</h3>
-              <ul className="space-y-4 text-cool-gray">
-                <li className="flex items-start">
-                  <svg className="w-6 h-6 text-ai-purple mr-3 mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span>End-to-End Encryption</span>
-                </li>
-                <li className="flex items-start">
-                  <svg className="w-6 h-6 text-ai-purple mr-3 mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span>Biometric Authentication</span>
-                </li>
-                <li className="flex items-start">
-                  <svg className="w-6 h-6 text-ai-purple mr-3 mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span>Privacy Controls</span>
-                </li>
-                <li className="flex items-start">
-                  <svg className="w-6 h-6 text-ai-purple mr-3 mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span>Regular Security Updates</span>
+                  <span className="text-ai-purple mr-3">04.</span>
+                  <span>Smart Shopping Integration</span>
                 </li>
               </ul>
             </motion.div>
@@ -448,34 +441,43 @@ const Home = () => {
       </section>
 
       {/* Join Waitlist Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-ai-purple-dark/30 to-obsidian">
+      <section className="py-32 px-4 sm:px-6 lg:px-8 bg-obsidian text-white" id="waitlist">
         <div className="max-w-3xl mx-auto text-center">
-          <motion.h2
-            className="text-4xl font-bold text-white mb-6"
+          <motion.p
+            className="text-sm text-white/60 mb-4 font-mono tracking-widest"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            Ready to Transform Your Style Experience?
-          </motion.h2>
-          <motion.p
-            className="text-xl text-cool-gray mb-8"
+            (05) JOIN THE MOVEMENT
+          </motion.p>
+          <motion.h2
+            className="text-4xl md:text-5xl font-display font-bold mb-8"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            Join our waitlist to be among the first to experience the future of fashion.
-          </motion.p>
-          <motion.div
+            Experience the future<br />of personal styling
+          </motion.h2>
+          <motion.p
+            className="text-lg text-white/80 mb-12"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
             viewport={{ once: true }}
           >
-            <Link to="/waitlist" className="btn-primary text-lg px-12 py-4 animate-glow">
-              Join the Waitlist
+            Be among the first to revolutionize your wardrobe with AI-powered styling.
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <Link to="/waitlist" className="bg-white text-obsidian px-12 py-4 rounded-lg hover:bg-white/90 transition-all duration-300 font-semibold hover:shadow-lg hover:shadow-white/20 hover:-translate-y-1 relative after:absolute after:inset-0 after:bg-gradient-to-r after:from-white/0 after:via-white/50 after:to-white/0 after:opacity-0 hover:after:opacity-100 after:transition-opacity overflow-hidden">
+              Join Waitlist
             </Link>
           </motion.div>
         </div>
