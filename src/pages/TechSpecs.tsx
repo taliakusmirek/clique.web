@@ -1,9 +1,6 @@
 import { motion } from 'framer-motion';
-import { useState } from 'react';
 
 const TechSpecs = () => {
-  const [hoveredFeature, setHoveredFeature] = useState<string | null>(null);
-
   const features = [
     {
       id: 'hardware',
@@ -118,8 +115,6 @@ const TechSpecs = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: index * 0.2 }}
                     viewport={{ once: true }}
-                    onHoverStart={() => setHoveredFeature(item.title)}
-                    onHoverEnd={() => setHoveredFeature(null)}
                   >
                     <h3 className="text-xl font-semibold text-white mb-2">
                       {item.title}

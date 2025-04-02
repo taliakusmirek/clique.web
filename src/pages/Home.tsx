@@ -3,12 +3,6 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
-interface Garment {
-  id: number;
-  name: string;
-  icon: React.ReactNode;
-}
-
 interface Benefit {
   icon: string;
   title: string;
@@ -72,7 +66,6 @@ const pageContent: ContentType = {
 };
 
 const Home = () => {
-  const [selectedOutfit, setSelectedOutfit] = useState<Garment | null>(null);
   const location = useLocation();
   const [activeToggle, setActiveToggle] = useState('home');
 
@@ -207,7 +200,6 @@ const Home = () => {
                   rotate: 0,
                   filter: 'drop-shadow(0 0 10px rgba(160,32,240,0.5))'
                 }}
-                onClick={() => setSelectedOutfit(item)}
               >
                 <div className="text-6xl select-none">
                   {item.icon}

@@ -1,12 +1,18 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
   const [activeToggle, setActiveToggle] = useState('home');
   const location = useLocation();
   const navigate = useNavigate();
+
+  // Clear localStorage on initial mount
+  useEffect(() => {
+    localStorage.removeItem('activeToggle');
+    if (location.pathname === '/') {
+      navigate('/?view=home', { replace: true });
+    }
+  }, []);
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);

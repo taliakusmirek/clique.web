@@ -2,22 +2,8 @@ import { motion } from 'framer-motion';
 import { useState } from 'react';
 
 const Waitlist = () => {
-  const [step, setStep] = useState(1);
-  const [formData, setFormData] = useState({
-    email: '',
-    preferredBrands: [] as string[],
-    stylePreferences: [] as string[],
-  });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
-
-  const brands = [
-    'Nike', 'Zara', 'H&M', 'Gucci', 'Adidas', 'Uniqlo', 'Levi\'s'
-  ];
-
-  const styles = [
-    'Casual', 'Formal', 'Streetwear', 'Athletic', 'Business', 'Bohemian'
-  ];
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -36,24 +22,6 @@ const Waitlist = () => {
     } finally {
       setIsSubmitting(false);
     }
-  };
-
-  const toggleBrand = (brand: string) => {
-    setFormData(prev => ({
-      ...prev,
-      preferredBrands: prev.preferredBrands.includes(brand)
-        ? prev.preferredBrands.filter(b => b !== brand)
-        : [...prev.preferredBrands, brand]
-    }));
-  };
-
-  const toggleStyle = (style: string) => {
-    setFormData(prev => ({
-      ...prev,
-      stylePreferences: prev.stylePreferences.includes(style)
-        ? prev.stylePreferences.filter(s => s !== style)
-        : [...prev.stylePreferences, style]
-    }));
   };
 
   if (isSubmitted) {
