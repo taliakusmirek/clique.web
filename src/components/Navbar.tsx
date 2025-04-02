@@ -45,14 +45,14 @@ const Navbar = () => {
         {/* Desktop Navigation Links - Hidden on Mobile */}
         <div className="hidden md:flex items-center space-x-8 w-1/3">
           <Link 
-            to="/tech-specs" 
+            to="/TechSpecs" 
             className="text-white/80 hover:text-white transition-all duration-300 text-sm tracking-wide relative group"
           >
             <span>Tech Specs</span>
             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#66909E] transition-all duration-300 group-hover:w-full"></span>
           </Link>
           <a 
-            href="mailto:contact@vault.ai" 
+            href="mailto:kusmire@bc.edu" 
             className="text-white/80 hover:text-white transition-all duration-300 text-sm tracking-wide relative group"
           >
             <span>Contact</span>
@@ -73,7 +73,7 @@ const Navbar = () => {
         {/* Desktop Waitlist Button - Hidden on Mobile */}
         <div className="hidden md:flex items-center justify-end w-1/3">
           <Link 
-            to="/waitlist" 
+            to="/Waitlist" 
             className="bg-[#66909E]/10 backdrop-blur-sm text-white px-6 py-2 rounded-lg transition-all duration-300 text-sm tracking-wide hover:bg-[#66909E]/20 hover:shadow-lg hover:shadow-[#66909E]/10 hover:-translate-y-0.5 relative overflow-hidden group"
           >
             <span className="relative z-10">Join Waitlist</span>
@@ -94,7 +94,7 @@ const Navbar = () => {
           >
             <div className="flex flex-col space-y-6 p-8">
               <Link 
-                to="/tech-specs" 
+                to="/TechSpecs" 
                 className="text-white/80 hover:text-white transition-all duration-300 text-lg tracking-wide relative group"
                 onClick={toggleMenu}
               >
@@ -102,7 +102,7 @@ const Navbar = () => {
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#66909E] transition-all duration-300 group-hover:w-full"></span>
               </Link>
               <a 
-                href="mailto:contact@vault.ai" 
+                href="mailto:kusmire@bc.edu" 
                 className="text-white/80 hover:text-white transition-all duration-300 text-lg tracking-wide relative group"
                 onClick={toggleMenu}
               >
@@ -110,7 +110,7 @@ const Navbar = () => {
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#66909E] transition-all duration-300 group-hover:w-full"></span>
               </a>
               <Link 
-                to="/waitlist" 
+                to="/Waitlist" 
                 className="bg-[#66909E]/10 backdrop-blur-sm text-white px-6 py-3 rounded-lg transition-all duration-300 text-lg tracking-wide hover:bg-[#66909E]/20 text-center group"
                 onClick={toggleMenu}
               >

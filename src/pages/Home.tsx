@@ -81,75 +81,6 @@ const Home = () => {
     setActiveToggle(toggle);
   }, [location]);
 
-  const getFloatingIcons = () => {
-    if (activeToggle === 'retail') {
-      return [
-        { 
-          id: 1, 
-          name: 'Store', 
-          icon: '🏪'
-        },
-        { 
-          id: 2, 
-          name: 'Shopping', 
-          icon: '🛍️'
-        },
-        { 
-          id: 3, 
-          name: 'Analytics', 
-          icon: '📊'
-        },
-        { 
-          id: 4, 
-          name: 'Growth', 
-          icon: '📈'
-        },
-        { 
-          id: 5, 
-          name: 'Mobile', 
-          icon: '📱'
-        },
-        { 
-          id: 6, 
-          name: 'Success', 
-          icon: '🎯'
-        }
-      ];
-    }
-
-    return [
-      { 
-        id: 1, 
-        name: 'T-Shirt', 
-        icon: '👕'
-      },
-      { 
-        id: 2, 
-        name: 'Jeans', 
-        icon: '👖'
-      },
-      { 
-        id: 3, 
-        name: 'Jacket', 
-        icon: '🧥'
-      },
-      { 
-        id: 4, 
-        name: 'Shoes', 
-        icon: '👟'
-      },
-      { 
-        id: 5, 
-        name: 'Dress', 
-        icon: '👗'
-      },
-      { 
-        id: 6, 
-        name: 'Suit', 
-        icon: '🤵'
-      }
-    ];
-  };
 
   const getHeroContent = (): ContentSection => {
     return activeToggle === 'home' ? pageContent.home : pageContent.retail;
@@ -187,7 +118,7 @@ const Home = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Transform Your Wardrobe with AI
+            Transform Your Wardrobe with our AI Mirror
           </motion.div>
         </div>
 
@@ -301,8 +232,7 @@ const Home = () => {
                   transition={{ duration: 0.8 }}
                   viewport={{ once: true }}
                 >
-                  AI-powered.<br />
-                  Style redefined.
+                  
                 </motion.h2>
               </div>
 
