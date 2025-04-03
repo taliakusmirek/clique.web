@@ -7,9 +7,9 @@ export default {
   theme: {
     extend: {
       colors: {
-        'obsidian': '#050A0B',
+        'obsidian': '#1A1A1A',
         'cool-gray': '#9FABAE',
-        'ai-purple': '#66909E',
+        'ai-purple': '#8B5CF6',
         'ai-purple-dark': '#344B53',
         'soft-lavender': '#FFFFFF',
         'text-primary': '#050A0B',
@@ -25,7 +25,7 @@ export default {
         'hero-gradient': 'linear-gradient(to bottom, rgba(5, 10, 11, 0.8) 0%, rgba(5, 10, 11, 0.4) 50%, rgba(5, 10, 11, 0) 100%)',
       },
       fontFamily: {
-        'sans': ['Inter', 'sans-serif'],
+        sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Open Sans', 'Helvetica Neue', 'sans-serif'],
         'display': ['Space Grotesk', 'sans-serif'],
         'mono': ['JetBrains Mono', 'monospace'],
       },

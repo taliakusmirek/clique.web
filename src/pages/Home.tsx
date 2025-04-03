@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import landingImage from '../assets/landing.png';
+import landingImage from '../assets/freepik__a-women-in-her-walk-in-closet-using-a-ai-mirror-in__6193.png';
 import mirrorTechImage from '../assets/mirror-tech.jpg';
 
 interface Benefit {
@@ -98,10 +98,11 @@ const Home = () => {
         <div className="absolute inset-0">
           <img 
             src={landingImage}
-            alt="Fashion Background" 
+            alt="AI Mirror in Walk-in Closet" 
             className="w-full h-full object-cover"
+            loading="eager"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#66909E]/20 to-[#344B53]/40" />
+          <div className="absolute inset-0 bg-gradient-to-b from-gray-900/50 to-gray-950/70" />
         </div>
 
         {/* Center Text */}
@@ -322,19 +323,19 @@ const Home = () => {
               <h3 className="text-2xl font-display font-bold text-obsidian mb-6">Mirror Hardware</h3>
               <ul className="space-y-4 text-obsidian/80">
                 <li className="flex items-start">
-                  <span className="text-ai-purple mr-3">01.</span>
+                  <span className="text-cool-gray mr-3">01.</span>
                   <span>4K Anti-glare Display with True Color</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-ai-purple mr-3">02.</span>
+                  <span className="text-cool-gray mr-3">02.</span>
                   <span>Depth-sensing Camera Array</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-ai-purple mr-3">03.</span>
+                  <span className="text-cool-gray mr-3">03.</span>
                   <span>Ambient Light Sensors</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-ai-purple mr-3">04.</span>
+                  <span className="text-cool-gray mr-3">04.</span>
                   <span>Gesture Recognition System</span>
                 </li>
               </ul>
@@ -351,19 +352,19 @@ const Home = () => {
               <h3 className="text-2xl font-display font-bold text-obsidian mb-6">AI Features</h3>
               <ul className="space-y-4 text-obsidian/80">
                 <li className="flex items-start">
-                  <span className="text-ai-purple mr-3">01.</span>
+                  <span className="text-cool-gray mr-3">01.</span>
                   <span>Real-time Style Analysis</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-ai-purple mr-3">02.</span>
+                  <span className="text-cool-gray mr-3">02.</span>
                   <span>Personalized Outfit Generation</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-ai-purple mr-3">03.</span>
+                  <span className="text-cool-gray mr-3">03.</span>
                   <span>Virtual Wardrobe Management</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-ai-purple mr-3">04.</span>
+                  <span className="text-cool-gray mr-3">04.</span>
                   <span>Smart Shopping Integration</span>
                 </li>
               </ul>
