@@ -1,12 +1,20 @@
 import { motion } from 'framer-motion';
 import waitlistVideo from '../assets/waitlistvideo.mp4';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 const Waitlist = () => {
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState('');
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.currentTime = 2;
+    }
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -34,22 +42,39 @@ const Waitlist = () => {
     }
   };
 
+  const VideoBackground = () => (
+    <>
+      <div className="absolute inset-0 bg-obsidian">
+        <video
+          ref={videoRef}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          className={`w-full h-full object-cover transition-opacity duration-1000 ${
+            isVideoLoaded ? 'opacity-100' : 'opacity-0'
+          }`}
+          onLoadedData={() => setIsVideoLoaded(true)}
+        >
+          <source src={waitlistVideo} type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-black/50" />
+      </div>
+
+      {/* Loading State */}
+      <div
+        className={`absolute inset-0 bg-obsidian transition-opacity duration-1000 ${
+          isVideoLoaded ? 'opacity-0 pointer-events-none' : 'opacity-100'
+        }`}
+      />
+    </>
+  );
+
   if (isSubmitted) {
     return (
       <div className="min-h-screen relative">
-        {/* Background Video with Gradient */}
-        <div className="absolute inset-0">
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="w-full h-full object-cover"
-          >
-            <source src={waitlistVideo} type="video/mp4" />
-          </video>
-          <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-black/50" />
-        </div>
+        <VideoBackground />
 
         {/* Success Message */}
         <div className="relative z-10 min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
@@ -73,19 +98,7 @@ const Waitlist = () => {
 
   return (
     <div className="min-h-screen relative">
-      {/* Background Video with Gradient */}
-      <div className="absolute inset-0">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="w-full h-full object-cover"
-        >
-          <source src={waitlistVideo} type="video/mp4" />
-        </video>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-black/50" />
-      </div>
+      <VideoBackground />
 
       {/* Content */}
       <div className="relative z-10 min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">

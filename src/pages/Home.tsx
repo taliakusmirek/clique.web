@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import landingVideo from '../assets/landingvideo.mp4';
 
@@ -74,12 +74,18 @@ const pageContent: ContentType = {
 const Home = () => {
   const location = useLocation();
   const [activeToggle, setActiveToggle] = useState('home');
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     // Get the active toggle from URL params or localStorage
     const params = new URLSearchParams(location.search);
     const toggle = params.get('view') || localStorage.getItem('activeToggle') || 'home';
     setActiveToggle(toggle);
+
+    if (videoRef.current) {
+      videoRef.current.currentTime = 2;
+    }
   }, [location]);
 
   const getHeroContent = (): ContentSection => {
@@ -93,18 +99,30 @@ const Home = () => {
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {/* Background Video with Gradient */}
-        <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-obsidian">
           <video
+            ref={videoRef}
             autoPlay
             muted
             loop
             playsInline
-            className="w-full h-full object-cover"
+            preload="auto"
+            className={`w-full h-full object-cover transition-opacity duration-1000 ${
+              isVideoLoaded ? 'opacity-100' : 'opacity-0'
+            }`}
+            onLoadedData={() => setIsVideoLoaded(true)}
           >
             <source src={landingVideo} type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-black/50" />
         </div>
+
+        {/* Loading State */}
+        <div
+          className={`absolute inset-0 bg-obsidian transition-opacity duration-1000 ${
+            isVideoLoaded ? 'opacity-0 pointer-events-none' : 'opacity-100'
+          }`}
+        />
 
         {/* Corner Elements */}
         <div className="absolute top-32 left-8 text-white/80 text-sm">
