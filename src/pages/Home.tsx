@@ -2,8 +2,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import landingImage from '../assets/freepik__a-women-in-her-walk-in-closet-using-a-ai-mirror-in__6193.png';
-import mirrorTechImage from '../assets/mirror-tech.jpg';
+import filmPhoto from '../assets/freepik__35mm-film-photography-a-24yearold-caucasian-woman-__48917.jpeg';
 
 interface Benefit {
   icon: string;
@@ -24,33 +23,33 @@ interface ContentType {
 
 const pageContent: ContentType = {
   home: {
-    title: 'Wear the Future. <br /> <span class="text-ai-purple/80">The Vault Mirror</span>',
-    subtitle: 'For those who dare to redefine style.',
+    title: 'Your Digital Closet, Anywhere',
+    subtitle: 'Turn your phone into a magic mirror - scan your clothes, try anything digitally, and shop smarter.',
     benefits: [
       {
         icon: '✨',
-        title: 'Smart Organization',
-        description: 'AI-powered wardrobe management that learns your style and keeps your clothes perfectly organized.'
+        title: 'Smart Closet Scanner',
+        description: 'Use your phone\'s camera to instantly digitize your wardrobe. AI automatically tags items by color, type, and brand.'
       },
       {
         icon: '🎯',
-        title: 'Perfect Outfits',
-        description: 'Get personalized outfit recommendations based on your style, occasion, and weather.'
+        title: 'Virtual Try-On',
+        description: 'See how clothes look on you before buying. Our advanced body scanning creates a perfect digital fit.'
       },
       {
         icon: '🔄',
-        title: 'Virtual Try-On',
-        description: 'See how clothes will look on you before you buy with our advanced AR technology.'
+        title: 'Smart Shopping',
+        description: 'Get personalized recommendations and find similar items from your favorite brands. Never buy the wrong size again.'
       },
       {
         icon: '🤖',
-        title: 'AI Stylist',
+        title: 'AI-Powered Style',
         description: 'Your personal AI fashion advisor available 24/7, learning and evolving with your style preferences.'
       }
     ]
   },
   retail: {
-    title: 'Transform Your <br /> <span class="text-ai-purple/80">Retail Experience.</span>',
+    title: 'Transform Your Retail Experience',
     subtitle: 'Engage. Convert. Grow. Scale.',
     benefits: [
       {
@@ -83,7 +82,6 @@ const Home = () => {
     setActiveToggle(toggle);
   }, [location]);
 
-
   const getHeroContent = (): ContentSection => {
     return activeToggle === 'home' ? pageContent.home : pageContent.retail;
   };
@@ -96,32 +94,32 @@ const Home = () => {
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0">
-          <img 
-            src={landingImage}
+          <img
+            src={filmPhoto}
             alt="AI Mirror in Walk-in Closet" 
             className="w-full h-full object-cover"
             loading="eager"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-gray-900/50 to-gray-950/70" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-black/50" />
         </div>
-
+        
         {/* Center Text */}
         <div className="relative z-30 text-center px-4 sm:px-6 lg:px-8">
-          <motion.h1
+          <motion.h1 
             className="text-6xl sm:text-7xl md:text-8xl font-bold text-white tracking-wide"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            Style has evolved.
+            Style is evolving.
           </motion.h1>
           <motion.div
-            className="mt-4 text-xl sm:text-2xl text-white/80"
+            className="mt-4 text-xl sm:text-2xl text-white/90"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Transform Your Wardrobe with our AI Mirror
+            Be the first to experience the future of personal styling.
           </motion.div>
         </div>
 
@@ -146,18 +144,18 @@ const Home = () => {
           Where AI meets your wardrobe
         </div>
         <div className="absolute bottom-32 right-8 text-white/80 text-sm text-right max-w-[200px]">
-          The future of personal styling
+          Where clothing isn't wasted
         </div>
       </section>
 
       {/* Promise Statement Section */}
-      <section className="py-32 px-4 sm:px-6 lg:px-8 bg-white text-obsidian relative overflow-hidden">
+      <section className="py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white via-purple-50 to-white text-obsidian relative overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
             {/* Left Column */}
             <div>
               <motion.p 
-                className="text-sm text-obsidian/60 mb-6 font-mono tracking-widest"
+                className="text-sm text-purple-600/60 mb-6 font-mono tracking-widest"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
@@ -166,13 +164,13 @@ const Home = () => {
                 (02) THE FUTURE OF STYLE
               </motion.p>
               <motion.h2 
-                className="text-4xl md:text-5xl font-display font-bold leading-tight mb-8"
+                className="text-4xl md:text-5xl font-display font-bold leading-tight mb-8 bg-gradient-to-r from-obsidian to-purple-600 bg-clip-text text-transparent"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
                 viewport={{ once: true }}
               >
-                Not just a mirror.<br />An AI stylist.<br />Your future self.
+                Say goodbye to<br />"I have nothing to wear"
               </motion.h2>
             </div>
             
@@ -185,7 +183,7 @@ const Home = () => {
                 transition={{ duration: 0.8, delay: 0.4 }}
                 viewport={{ once: true }}
               >
-                Where artificial intelligence meets personal style. The Vault Mirror transforms your daily routine into a curated fashion experience, powered by advanced AI that learns and evolves with you.
+                Tired of staring at a full closet with nothing to wear? The Vault app transforms your wardrobe into a digital collection, instantly showing you all possible outfit combinations. With body-accurate virtual try-on and AI-powered style recommendations, you'll save time, reduce returns, and always know exactly what to wear.
               </motion.p>
             </div>
           </div>
@@ -193,11 +191,11 @@ const Home = () => {
       </section>
 
       {/* Benefits Section */}
-      <section className="py-32 px-4 sm:px-6 lg:px-8 bg-obsidian text-white">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-obsidian via-[#1A1A1A] to-[#2D1B3B] text-white">
+        <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
             <motion.p 
-              className="text-sm text-white/60 mb-4 font-mono tracking-widest"
+              className="text-sm text-purple-300/60 mb-4 font-mono tracking-widest"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
@@ -206,7 +204,7 @@ const Home = () => {
               (03) KEY FEATURES
             </motion.p>
             <motion.h2 
-              className="text-4xl md:text-5xl font-display font-bold"
+              className="text-4xl md:text-5xl font-display font-bold bg-gradient-to-r from-white to-purple-300 bg-clip-text text-transparent"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -215,84 +213,80 @@ const Home = () => {
               AI-powered innovation
             </motion.h2>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
-            {/* Left Column - Image */}
-            <div className="relative overflow-hidden rounded-lg h-[400px]">
-              <img 
-                src={mirrorTechImage}
-                alt="Vault Mirror Technology" 
-                className="w-full h-full object-cover object-center"
-              />
-              <div className="absolute inset-0 bg-gradient-to-b from-[#66909E]/20 to-[#344B53]/40" />
+            
+          <div className="flex flex-col justify-center">
+            <motion.p 
+              className="text-sm text-purple-300/60 mb-6 font-mono tracking-widest text-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              REVOLUTIONARY MOBILE APP
+            </motion.p>
               
-              {/* Overlay Text */}
-              <div className="absolute bottom-8 left-8">
-                <motion.h2 
-                  className="text-4xl md:text-5xl font-display font-bold leading-tight mb-4"
+            <motion.div
+              className="space-y-8"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              <p className="text-lg text-white/80 leading-relaxed text-center">
+                The Vault app integrates cutting-edge AI technology to transform your daily styling experience. Our advanced computer vision system provides real-time outfit recommendations, virtual try-ons, and intelligent wardrobe management. Experience the future of personal styling, powered by artificial intelligence.
+              </p>
+
+              {/* Metrics Section */}
+              <div className="grid grid-cols-2 gap-6 mt-8">
+                <motion.div 
+                  className="bg-gradient-to-br from-white/5 to-purple-900/20 backdrop-blur-sm p-6 rounded-lg border border-purple-500/10 hover:border-purple-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/5 hover:-translate-y-1"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8 }}
+                  transition={{ duration: 0.8, delay: 0.3 }}
                   viewport={{ once: true }}
                 >
-                  
-                </motion.h2>
+                  <div className="text-3xl font-bold text-purple-300 mb-2">50%+</div>
+                  <p className="text-white/80 text-sm">Reduction in returns with body-accurate virtual try-on</p>
+                </motion.div>
+                <motion.div 
+                  className="bg-gradient-to-br from-white/5 to-purple-900/20 backdrop-blur-sm p-6 rounded-lg border border-purple-500/10 hover:border-purple-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/5 hover:-translate-y-1"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.4 }}
+                  viewport={{ once: true }}
+                >
+                  <div className="text-3xl font-bold text-purple-300 mb-2">15+ min</div>
+                  <p className="text-white/80 text-sm">Saved daily on outfit decisions</p>
+                </motion.div>
               </div>
-
-
-            </div>
-            
-            {/* Right Column - Tech Features */}
-            <div className="flex flex-col justify-center">
-              <motion.p 
-                className="text-sm text-white/60 mb-6 font-mono tracking-widest"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
-              >
-                REVOLUTIONARY SMART MIRROR
-              </motion.p>
-              
-              <motion.div
-                className="space-y-8"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                viewport={{ once: true }}
-              >
-                <p className="text-lg text-white/80 leading-relaxed">
-                  The Vault Mirror integrates cutting-edge AI technology to transform your daily styling experience. Our advanced computer vision system provides real-time outfit recommendations, virtual try-ons, and intelligent wardrobe management. Experience the future of personal styling, powered by artificial intelligence.
-                </p>
                 
-                <div className="grid grid-cols-2 gap-6 mt-8">
-                  {currentContent.benefits.map((benefit: Benefit, index: number) => (
-                    <motion.div 
-                      key={index}
-                      className="bg-white/5 backdrop-blur-sm p-6 rounded-lg border border-white/10 hover:border-white/20 transition-all duration-300 hover:shadow-lg hover:shadow-white/5 hover:-translate-y-1 pixel-corner"
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.8, delay: 0.2 * (index + 1) }}
-                      viewport={{ once: true }}
-                      whileHover={{ scale: 1.02 }}
-                    >
-                      <h3 className="text-lg font-semibold text-white mb-2">{benefit.title}</h3>
-                      <p className="text-white/60 text-sm">{benefit.description}</p>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
-            </div>
+              <div className="grid grid-cols-2 gap-6 mt-8">
+                {currentContent.benefits.map((benefit: Benefit, index: number) => (
+                  <motion.div 
+                    key={index}
+                    className="bg-gradient-to-br from-white/5 to-purple-900/20 backdrop-blur-sm p-6 rounded-lg border border-purple-500/10 hover:border-purple-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/5 hover:-translate-y-1 pixel-corner"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.2 * (index + 1) }}
+                    viewport={{ once: true }}
+                    whileHover={{ scale: 1.02 }}
+                  >
+                    <h3 className="text-lg font-semibold text-white mb-2">{benefit.title}</h3>
+                    <p className="text-white/60 text-sm">{benefit.description}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* Tech Specs Section */}
-      <section className="py-32 px-4 sm:px-6 lg:px-8 bg-white text-obsidian" id="tech-specs">
+      <section className="py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white via-purple-50 to-white text-obsidian" id="tech-specs">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <motion.p 
-              className="text-sm text-obsidian/60 mb-4 font-mono tracking-widest"
+              className="text-sm text-purple-600/60 mb-4 font-mono tracking-widest"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
@@ -301,7 +295,7 @@ const Home = () => {
               (04) TECHNICAL SPECIFICATIONS
             </motion.p>
             <motion.h2 
-              className="text-4xl md:text-5xl font-display font-bold"
+              className="text-4xl md:text-5xl font-display font-bold bg-gradient-to-r from-obsidian to-purple-600 bg-clip-text text-transparent"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -312,60 +306,60 @@ const Home = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            {/* Hardware Specs */}
+            {/* Mobile App Features */}
             <motion.div
-              className="bg-obsidian/5 backdrop-blur-sm p-8 rounded-lg border border-obsidian/10 hover:border-obsidian/20 transition-all duration-300 hover:shadow-lg hover:shadow-obsidian/5 hover:-translate-y-1 pixel-border"
+              className="bg-gradient-to-br from-white to-purple-50 backdrop-blur-sm p-8 rounded-lg border border-purple-200 hover:border-purple-300 transition-all duration-300 hover:shadow-lg hover:shadow-purple-200/20 hover:-translate-y-1 pixel-border"
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <h3 className="text-2xl font-display font-bold text-obsidian mb-6">Mirror Hardware</h3>
+              <h3 className="text-2xl font-display font-bold text-obsidian mb-6">Mobile App Features</h3>
               <ul className="space-y-4 text-obsidian/80">
                 <li className="flex items-start">
-                  <span className="text-cool-gray mr-3">01.</span>
-                  <span>4K Anti-glare Display with True Color</span>
+                  <span className="text-purple-600 mr-3">01.</span>
+                  <span>Clothing Scanner with ARKit/ARCore</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-cool-gray mr-3">02.</span>
-                  <span>Depth-sensing Camera Array</span>
+                  <span className="text-purple-600 mr-3">02.</span>
+                  <span>Virtual Try-On with Body Scanning</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-cool-gray mr-3">03.</span>
-                  <span>Ambient Light Sensors</span>
+                  <span className="text-purple-600 mr-3">03.</span>
+                  <span>Store Integration with Partner Brands</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-cool-gray mr-3">04.</span>
-                  <span>Gesture Recognition System</span>
+                  <span className="text-purple-600 mr-3">04.</span>
+                  <span>AI-Powered Style Recommendations</span>
                 </li>
               </ul>
             </motion.div>
 
-            {/* Software Specs */}
+            {/* AI Technology */}
             <motion.div
-              className="bg-obsidian/5 backdrop-blur-sm p-8 rounded-lg border border-obsidian/10 hover:border-obsidian/20 transition-all duration-300 hover:shadow-lg hover:shadow-obsidian/5 hover:-translate-y-1 pixel-border"
+              className="bg-gradient-to-br from-white to-purple-50 backdrop-blur-sm p-8 rounded-lg border border-purple-200 hover:border-purple-300 transition-all duration-300 hover:shadow-lg hover:shadow-purple-200/20 hover:-translate-y-1 pixel-border"
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <h3 className="text-2xl font-display font-bold text-obsidian mb-6">AI Features</h3>
+              <h3 className="text-2xl font-display font-bold text-obsidian mb-6">AI Technology</h3>
               <ul className="space-y-4 text-obsidian/80">
                 <li className="flex items-start">
-                  <span className="text-cool-gray mr-3">01.</span>
-                  <span>Real-time Style Analysis</span>
+                  <span className="text-purple-600 mr-3">01.</span>
+                  <span>CLIP + SAM for Image Recognition</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-cool-gray mr-3">02.</span>
-                  <span>Personalized Outfit Generation</span>
+                  <span className="text-purple-600 mr-3">02.</span>
+                  <span>MediaPipe for Body Tracking</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-cool-gray mr-3">03.</span>
-                  <span>Virtual Wardrobe Management</span>
+                  <span className="text-purple-600 mr-3">03.</span>
+                  <span>ONNX Runtime for Edge Processing</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-cool-gray mr-3">04.</span>
-                  <span>Smart Shopping Integration</span>
+                  <span className="text-purple-600 mr-3">04.</span>
+                  <span>TensorFlow Graphics for 3D Rendering</span>
                 </li>
               </ul>
             </motion.div>
@@ -374,10 +368,10 @@ const Home = () => {
       </section>
 
       {/* Join Waitlist Section */}
-      <section className="py-32 px-4 sm:px-6 lg:px-8 bg-obsidian text-white" id="waitlist">
+      <section className="py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-obsidian via-[#2D1B3B] to-[#1A1A1A] text-white" id="waitlist">
         <div className="max-w-3xl mx-auto text-center">
           <motion.p
-            className="text-sm text-white/60 mb-4 font-mono tracking-widest"
+            className="text-sm text-purple-300/60 mb-4 font-mono tracking-widest"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -386,7 +380,7 @@ const Home = () => {
             (05) JOIN THE MOVEMENT
           </motion.p>
           <motion.h2
-            className="text-4xl md:text-5xl font-display font-bold mb-8"
+            className="text-4xl md:text-5xl font-display font-bold mb-8 bg-gradient-to-r from-white to-purple-300 bg-clip-text text-transparent"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -409,7 +403,7 @@ const Home = () => {
             transition={{ duration: 0.8, delay: 0.6 }}
             viewport={{ once: true }}
           >
-            <Link to="/waitlist" className="bg-white text-obsidian px-12 py-4 rounded-lg hover:bg-white/90 transition-all duration-300 font-semibold hover:shadow-lg hover:shadow-white/20 hover:-translate-y-1 relative after:absolute after:inset-0 after:bg-gradient-to-r after:from-white/0 after:via-white/50 after:to-white/0 after:opacity-0 hover:after:opacity-100 after:transition-opacity overflow-hidden">
+            <Link to="/waitlist" className="bg-gradient-to-r from-purple-600 to-purple-800 text-white px-12 py-4 rounded-lg hover:from-purple-700 hover:to-purple-900 transition-all duration-300 font-semibold hover:shadow-lg hover:shadow-purple-500/20 hover:-translate-y-1 relative after:absolute after:inset-0 after:bg-gradient-to-r after:from-white/0 after:via-white/50 after:to-white/0 after:opacity-0 hover:after:opacity-100 after:transition-opacity overflow-hidden">
               Join Waitlist
             </Link>
           </motion.div>
