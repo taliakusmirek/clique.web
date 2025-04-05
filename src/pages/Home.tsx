@@ -74,7 +74,6 @@ const pageContent: ContentType = {
 const Home = () => {
   const location = useLocation();
   const [activeToggle, setActiveToggle] = useState('home');
-  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
