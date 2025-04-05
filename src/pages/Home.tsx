@@ -107,37 +107,11 @@ const Home = () => {
             loop
             playsInline
             preload="auto"
-            className={`w-full h-full object-cover transition-opacity duration-1000 ${
-              isVideoLoaded ? 'opacity-100' : 'opacity-0'
-            }`}
-            onLoadedData={() => setIsVideoLoaded(true)}
+            className="w-full h-full object-cover"
           >
             <source src={landingVideo} type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-black/50" />
-        </div>
-
-        {/* Loading State */}
-        <div
-          className={`absolute inset-0 bg-obsidian transition-opacity duration-1000 ${
-            isVideoLoaded ? 'opacity-0 pointer-events-none' : 'opacity-100'
-          }`}
-        />
-
-        {/* Corner Elements */}
-        <div className="absolute top-32 left-8 text-white/80 text-sm">
-          Innovate
-        </div>
-        <div className="absolute top-32 right-8 text-white/80 text-sm">
-          Elevate
-        </div>
-
-        {/* Bottom Taglines */}
-        <div className="absolute bottom-32 left-8 text-white/80 text-sm max-w-[200px]">
-          Where AI meets your wardrobe
-        </div>
-        <div className="absolute bottom-32 right-8 text-white/80 text-sm text-right max-w-[200px]">
-          Where clothing isn't wasted
         </div>
 
         {/* Content */}

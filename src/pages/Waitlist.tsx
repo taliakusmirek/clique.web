@@ -7,7 +7,6 @@ const Waitlist = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState('');
-  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
@@ -43,32 +42,20 @@ const Waitlist = () => {
   };
 
   const VideoBackground = () => (
-    <>
-      <div className="absolute inset-0 bg-obsidian">
-        <video
-          ref={videoRef}
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          className={`w-full h-full object-cover transition-opacity duration-1000 ${
-            isVideoLoaded ? 'opacity-100' : 'opacity-0'
-          }`}
-          onLoadedData={() => setIsVideoLoaded(true)}
-        >
-          <source src={waitlistVideo} type="video/mp4" />
-        </video>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-black/50" />
-      </div>
-
-      {/* Loading State */}
-      <div
-        className={`absolute inset-0 bg-obsidian transition-opacity duration-1000 ${
-          isVideoLoaded ? 'opacity-0 pointer-events-none' : 'opacity-100'
-        }`}
-      />
-    </>
+    <div className="absolute inset-0 bg-obsidian">
+      <video
+        ref={videoRef}
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        className="w-full h-full object-cover"
+      >
+        <source src={waitlistVideo} type="video/mp4" />
+      </video>
+      <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-black/50" />
+    </div>
   );
 
   if (isSubmitted) {
