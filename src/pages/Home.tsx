@@ -131,7 +131,8 @@ const Home = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-xl md:text-2xl text-white/90 mb-12 font-display"
           >
-            See how new clothes match your existing wardrobe instantly
+            See how new clothes match your existing wardrobe <span className="hidden md:inline"><br /></span>
+            using our accurate and realistic 3D try-on.
           </motion.p>
           
           {/* Waitlist Button */}
