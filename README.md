@@ -1,20 +1,9 @@
-# Vault - Your AI Wardrobe Mirror
+# Vault - Your AI-Powered Smart Wardrobe App
 
-The website for a revolutionary smart wardrobe technology mirror that combines AI-powered fashion recommendations with virtual try-on capabilities.
+The Future of Fashion is in Your Pocket.
 
-## Features
+Vault is the ultimate AI wardrobe assistant that transforms how you discover, organize, and wear your clothes—right from your smartphone. Combining real-time scanning, hyper-accurate virtual try-ons, and AI styling, Vault turns your closet into an interactive fashion experience—helping you wear more of what you own while shopping smarter.
 
-### For Home Users
-- 🪞 Smart Mirror Technology
-- 👕 AI-Powered Wardrobe Management
-- 🎯 Personalized Style Recommendations
-- 🔄 Virtual Try-On Experience
-
-### For Retail Partners
-- 📊 Real-time Analytics
-- 🎯 Smart Inventory Management
-- 🌟 Enhanced Customer Experience
-- 📱 Omnichannel Integration
 
 ## Tech Stack
 
