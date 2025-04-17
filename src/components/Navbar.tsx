@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
 
 const Navbar = () => {
@@ -22,7 +21,7 @@ const Navbar = () => {
           {/* Logo - Centered */}
           <div className="absolute left-1/2 transform -translate-x-1/2">
             <Link to="/" className="flex items-center">
-              <span className="text-2xl font-bold text-white">VAULT</span>
+              <span className="text-2xl font-bold text-white">CLIQUE</span>
             </Link>
           </div>
 
@@ -43,23 +42,6 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.2 }}
-            className="md:hidden fixed inset-0 bg-obsidian/95 backdrop-blur-sm z-40 pt-16"
-          >
-            <div className="px-4 py-8 space-y-6">
-              {/* Mobile menu is now empty */}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </nav>
   );
 };

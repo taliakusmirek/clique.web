@@ -1,6 +1,6 @@
 {
-  "name": "Vault - Your AI Wardrobe Mirror",
-  "short_name": "Vault",
+  "name": "CLIQUE - AI Thrift Shopping Assistant",
+  "short_name": "CLIQUE",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",
@@ -13,7 +13,7 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#A020F0",
-  "background_color": "#0A0A0A",
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
   "display": "standalone"
 } 

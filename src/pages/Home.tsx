@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
-import landingVideo from '../assets/landingvideo.mp4';
+import landingVideo from '../assets/boldred.mp4';
 
 interface Benefit {
   icon: string;
@@ -23,49 +23,49 @@ interface ContentType {
 
 const pageContent: ContentType = {
   home: {
-    title: 'Your Digital Closet, Anywhere',
-    subtitle: 'Turn your phone into a magic mirror - scan your clothes, try anything digitally, and shop smarter.',
+    title: 'Your AI-Powered Thrift Shopping Assistant',
+    subtitle: 'Try on thrifted clothes instantly, check quality, and never miss the perfect find.',
     benefits: [
       {
-        icon: '✨',
-        title: 'Smart Closet Scanner',
-        description: 'Use your phone\'s camera to instantly digitize your wardrobe. AI automatically tags items by color, type, and brand.'
+        icon: '📏',
+        title: '1-Click Thrift Scan',
+        description: 'Point your camera at any item to see how it fits your body - no fitting room needed. AI predicts fit using your personal size data.'
       },
       {
-        icon: '🎯',
-        title: 'Virtual Try-On',
-        description: 'See how clothes look on you before buying. Our advanced body scanning creates a perfect digital fit.'
+        icon: '🔍',
+        title: 'Fabric Detective',
+        description: 'Instantly analyze fabric quality and wear. Get a detailed grade (A-F) on item condition before you buy.'
       },
       {
-        icon: '🔄',
-        title: 'Smart Shopping',
-        description: 'Get personalized recommendations and find similar items from your favorite brands. Never buy the wrong size again.'
+        icon: '👥',
+        title: 'Thrift Squad',
+        description: 'Shop with friends virtually, share finds, and rotate items monthly with your squad using smart NFC tags.'
       },
       {
-        icon: '🤖',
-        title: 'AI-Powered Style',
-        description: 'Your personal AI fashion advisor available 24/7, learning and evolving with your style preferences.'
+        icon: '✂️',
+        title: 'Tailor or Trash?',
+        description: 'See instant alteration previews and costs. Know exactly how that vintage find could fit you perfectly.'
       }
     ]
   },
   retail: {
-    title: 'Transform Your Retail Experience',
-    subtitle: 'Engage. Convert. Grow. Scale.',
+    title: 'Transform Your Thrift Store',
+    subtitle: 'Boost Sales. Reduce Returns. Build Community.',
     benefits: [
       {
         icon: '📊',
-        title: 'Data Insights',
-        description: 'Get real-time analytics on customer preferences and shopping behavior.'
+        title: 'Virtual Rack System',
+        description: 'Upload inventory via 3D scans, let shoppers browse and reserve items for 24 hours.'
+      },
+      {
+        icon: '💰',
+        title: 'Dynamic Pricing AI',
+        description: 'Price items fairly and reduce unsold inventory by 20% with our smart pricing algorithm.'
       },
       {
         icon: '🎯',
-        title: 'Smart Inventory',
-        description: 'AI-powered inventory management that predicts trends and optimizes stock levels.'
-      },
-      {
-        icon: '🌟',
-        title: 'Customer Experience',
-        description: 'Provide personalized shopping experiences with virtual try-on and style recommendations.'
+        title: 'Customer Insights',
+        description: 'Track what sells, why it sells, and build a loyal community of regular thrifters.'
       }
     ]
   }
@@ -83,7 +83,24 @@ const Home = () => {
     setActiveToggle(toggle);
 
     if (videoRef.current) {
-      videoRef.current.currentTime = 2;
+      // Set initial time to 1 second
+      videoRef.current.currentTime = 1;
+
+      // Add timeupdate event listener to handle the 5-second end time
+      const handleTimeUpdate = () => {
+        if (videoRef.current && videoRef.current.currentTime >= 5) {
+          videoRef.current.currentTime = 1;
+        }
+      };
+
+      videoRef.current.addEventListener('timeupdate', handleTimeUpdate);
+
+      // Cleanup listener on component unmount
+      return () => {
+        if (videoRef.current) {
+          videoRef.current.removeEventListener('timeupdate', handleTimeUpdate);
+        }
+      };
     }
   }, [location]);
 
@@ -121,9 +138,9 @@ const Home = () => {
             transition={{ duration: 0.8 }}
             className="text-4xl md:text-6xl font-display font-bold text-white mb-6"
           >
-            Try Before You Buy,{' '}
+            Try Before You Thrift,{' '}
             <br />
-            Without the Wait
+            Right From Your Phone
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -131,8 +148,8 @@ const Home = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-xl md:text-2xl text-white/90 mb-12 font-display"
           >
-            See how new clothes match your existing wardrobe <span className="hidden md:inline"><br /></span>
-            using our accurate and realistic 3D try-on.
+            Turn any thrift store into your fitting room with AI-powered <span className="hidden md:inline"><br /></span>
+            try-on, quality checks, and price comparisons.
           </motion.p>
           
           {/* Waitlist Button */}
@@ -143,7 +160,7 @@ const Home = () => {
           >
             <Link 
               to="/waitlist" 
-              className="inline-block bg-gradient-to-r from-purple-600 to-purple-800 text-white px-8 py-4 rounded-full text-lg font-medium hover:shadow-lg hover:shadow-purple-500/20 transition-all duration-300 transform hover:-translate-y-1 relative after:absolute after:inset-0 after:bg-gradient-to-r after:from-white/0 after:via-white/50 after:to-white/0 after:opacity-0 hover:after:opacity-100 after:transition-opacity overflow-hidden"
+              className="inline-block bg-gradient-to-r from-red-400 to-orange-500 text-white px-8 py-4 rounded-full text-lg font-medium hover:shadow-lg hover:shadow-red-500/20 transition-all duration-300 transform hover:-translate-y-1 relative after:absolute after:inset-0 after:bg-gradient-to-r after:from-white/0 after:via-white/50 after:to-white/0 after:opacity-0 hover:after:opacity-100 after:transition-opacity overflow-hidden"
             >
               Join the Waitlist
             </Link>

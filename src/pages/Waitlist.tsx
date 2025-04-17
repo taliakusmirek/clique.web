@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import waitlistVideo from '../assets/waitlistvideo.mp4';
+import waitlistVideo from '../assets/boldred.mp4';
 import { useState, useRef, useEffect } from 'react';
 
 const Waitlist = () => {
@@ -11,7 +11,21 @@ const Waitlist = () => {
 
   useEffect(() => {
     if (videoRef.current) {
-      videoRef.current.currentTime = 2;
+      videoRef.current.currentTime = 9;
+
+      const handleTimeUpdate = () => {
+        if (videoRef.current && videoRef.current.currentTime >= 12) {
+          videoRef.current.currentTime = 9;
+        }
+      };
+
+      videoRef.current.addEventListener('timeupdate', handleTimeUpdate);
+
+      return () => {
+        if (videoRef.current) {
+          videoRef.current.removeEventListener('timeupdate', handleTimeUpdate);
+        }
+      };
     }
   }, []);
 
@@ -96,10 +110,10 @@ const Waitlist = () => {
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-4">
-              Join the Waitlist
+                Join the Waitlist
             </h2>
             <p className="text-xl text-white/90 mb-8 font-display">
-              Be the first to experience the future of personal styling
+              Be the first to experience the future of thrift shopping
             </p>
           </motion.div>
 
@@ -126,10 +140,10 @@ const Waitlist = () => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className={`w-full bg-gradient-to-r from-purple-600 to-purple-800 text-white px-8 py-4 rounded-lg transition-all duration-300 font-semibold relative overflow-hidden ${
+              className={`w-full bg-gradient-to-r from-red-400 to-orange-500 text-white px-8 py-4 rounded-lg transition-all duration-300 font-semibold relative overflow-hidden ${
                 isSubmitting 
                   ? 'opacity-75 cursor-not-allowed'
-                  : 'hover:shadow-lg hover:shadow-purple-500/20 hover:-translate-y-1 after:absolute after:inset-0 after:bg-gradient-to-r after:from-white/0 after:via-white/50 after:to-white/0 after:opacity-0 hover:after:opacity-100 after:transition-opacity'
+                  : 'hover:shadow-lg hover:shadow-red-500/20 hover:-translate-y-1 after:absolute after:inset-0 after:bg-gradient-to-r after:from-white/0 after:via-white/50 after:to-white/0 after:opacity-0 hover:after:opacity-100 after:transition-opacity'
               }`}
             >
               {isSubmitting ? 'Joining...' : 'Join Now'}
