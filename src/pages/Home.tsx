@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
-import landingVideo from '../assets/boldred.mp4';
+import butterfliesVideo from '../assets/butterflies.mp4';
 
 interface Benefit {
   icon: string;
@@ -114,20 +114,22 @@ const Home = () => {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Background Video with Gradient */}
-        <div className="absolute inset-0 bg-obsidian">
+        {/* Background Video with subtle overlay */}
+        <div className="absolute inset-0 bg-black">
           <video
-            ref={videoRef}
             autoPlay
             muted
             loop
             playsInline
-            preload="auto"
-            className="w-full h-full object-cover"
+            className="absolute w-full h-full object-cover"
+            style={{
+              objectPosition: 'center',
+            }}
           >
-            <source src={landingVideo} type="video/mp4" />
+            <source src={butterfliesVideo} type="video/mp4" />
           </video>
-          <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-black/50" />
+          {/* Subtle dark overlay */}
+          <div className="absolute inset-0 bg-black/20" />
         </div>
 
         {/* Content */}
@@ -160,9 +162,12 @@ const Home = () => {
           >
             <Link 
               to="/waitlist" 
-              className="inline-block bg-gradient-to-r from-red-400 to-orange-500 text-white px-8 py-4 rounded-full text-lg font-medium hover:shadow-lg hover:shadow-red-500/20 transition-all duration-300 transform hover:-translate-y-1 relative after:absolute after:inset-0 after:bg-gradient-to-r after:from-white/0 after:via-white/50 after:to-white/0 after:opacity-0 hover:after:opacity-100 after:transition-opacity overflow-hidden"
+              className="inline-block border-2 border-white/30 text-white px-8 py-4 rounded-full text-lg font-medium 
+              transition-all duration-300 transform hover:-translate-y-1 relative overflow-hidden group"
             >
-              Join the Waitlist
+              <span className="relative z-10">Join the Waitlist</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-red-400/60 to-orange-500/60 opacity-0 
+                group-hover:opacity-80 transition-opacity duration-300" />
             </Link>
           </motion.div>
         </div>
