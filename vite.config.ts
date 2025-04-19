@@ -21,13 +21,13 @@ export default defineConfig({
       '@assets': path.resolve(process.cwd(), './src/assets'),
     },
   },
-  assetsInclude: ['**/*.png', '**/*.jpg', '**/*.jpeg', '**/*.gif', '**/*.svg', '**/*.glb'],
+  assetsInclude: ['**/*.png', '**/*.jpg', '**/*.jpeg', '**/*.gif', '**/*.svg', '**/*.glb', '**/*.obj', '**/*.mtl'],
   build: {
     rollupOptions: {
       output: {
         assetFileNames: 'assets/[name]-[hash][extname]',
       },
-      external: ['*.glb'],
+      external: ['*.glb', '*.obj', '*.mtl'],
     },
   },
   server: {

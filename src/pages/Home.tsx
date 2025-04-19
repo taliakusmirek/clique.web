@@ -6,7 +6,7 @@ import purpleBackground from '../assets/purple.jpg';
 import { Canvas } from '@react-three/fiber';
 import { Suspense } from 'react';
 import { OrbitControls } from '@react-three/drei';
-import { SwirlModel } from '../components/SwirlModel';
+import { SwirlModel } from './SwirlModel';
 
 interface Benefit {
   icon: string;
@@ -74,6 +74,15 @@ const pageContent: ContentType = {
     ]
   }
 };
+
+// Loading component
+function LoadingFallback() {
+  return (
+    <div className="absolute inset-0 flex items-center justify-center text-[#f9ff81]">
+      Loading 3D Model...
+    </div>
+  );
+}
 
 const Home = () => {
   const location = useLocation();
@@ -155,7 +164,7 @@ const Home = () => {
               preserveDrawingBuffer: false,
             }}
           >
-            <Suspense fallback={null}>
+            <Suspense fallback={<LoadingFallback />}>
               <ambientLight intensity={0.5} />
               <directionalLight position={[5, 5, 5]} intensity={1} />
               <SwirlModel />
