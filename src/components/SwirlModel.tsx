@@ -1,7 +1,6 @@
 import { useRef, useEffect, useState } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js';
-import { MTLLoader } from 'three/examples/jsm/loaders/MTLLoader.js';
 import * as THREE from 'three';
 
 export function SwirlModel() {
@@ -14,27 +13,12 @@ export function SwirlModel() {
       try {
         console.log('Starting model load...');
         
-        // First load MTL
-        const mtlLoader = new MTLLoader();
-        const materials = await new Promise<MTLLoader.MaterialCreator>((resolve, reject) => {
-          mtlLoader.load(
-            import.meta.env.PROD ? '/spiral.mtl' : '/spiral.mtl',
-            resolve,
-            undefined,
-            reject
-          );
-        });
-        
-        console.log('MTL loaded successfully');
-        materials.preload();
-
-        // Then load OBJ
+        // Load OBJ directly
         const objLoader = new OBJLoader();
-        objLoader.setMaterials(materials);
         
         const obj = await new Promise<THREE.Group>((resolve, reject) => {
           objLoader.load(
-            import.meta.env.PROD ? '/spiral.obj' : '/spiral.obj',
+            '/spiral.obj',
             resolve,
             undefined,
             reject
