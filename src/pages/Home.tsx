@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
-import butterfliesVideo from '../assets/butterflies.mp4';
+import clothingVideo from '../assets/clothing.mp4';
 
 interface Benefit {
   icon: string;
@@ -124,9 +124,11 @@ const Home = () => {
             className="absolute w-full h-full object-cover"
             style={{
               objectPosition: 'center',
+              transform: 'scale(1.2)',
+              transformOrigin: 'center center'
             }}
           >
-            <source src={butterfliesVideo} type="video/mp4" />
+            <source src={clothingVideo} type="video/mp4" />
           </video>
           {/* Subtle dark overlay */}
           <div className="absolute inset-0 bg-black/20" />
@@ -138,7 +140,7 @@ const Home = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-4xl md:text-6xl font-display font-bold text-white mb-6"
+            className="text-3xl md:text-5xl font-display font-bold text-white mb-6"
           >
             Try Before You Thrift,{' '}
             <br />
@@ -148,7 +150,7 @@ const Home = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xl md:text-2xl text-white/90 mb-12 font-display"
+            className="text-lg md:text-xl text-white/90 mb-12 font-display"
           >
             Turn any thrift store into your fitting room with AI-powered <span className="hidden md:inline"><br /></span>
             try-on, quality checks, and price comparisons.
@@ -162,7 +164,7 @@ const Home = () => {
           >
             <Link 
               to="/waitlist" 
-              className="inline-block border-2 border-white/30 text-white px-8 py-4 rounded-full text-lg font-medium 
+              className="inline-block border-2 border-white/30 text-white px-8 py-3 rounded-full text-base font-medium 
               transition-all duration-300 transform hover:-translate-y-1 relative overflow-hidden group"
             >
               <span className="relative z-10">Join the Waitlist</span>

@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import butterfliesVideo from '../assets/butterflies.mp4';
+import clothingVideo from '../assets/clothing.mp4';
 
 const Waitlist = () => {
   const [email, setEmail] = useState('');
@@ -44,9 +44,11 @@ const Waitlist = () => {
         className="absolute w-full h-full object-cover"
         style={{
           objectPosition: 'center',
+          transform: 'scale(1.2)',
+          transformOrigin: 'center center'
         }}
       >
-        <source src={butterfliesVideo} type="video/mp4" />
+        <source src={clothingVideo} type="video/mp4" />
       </video>
       {/* Subtle dark overlay */}
       <div className="absolute inset-0 bg-black/20" />
@@ -69,7 +71,7 @@ const Waitlist = () => {
               <span className="text-3xl">✨</span>
             </div>
             <h2 className="text-2xl font-display font-bold text-white mb-4">Welcome to the Future!</h2>
-            <p className="text-white/80">
+            <p className="text-base text-white/80">
               Thanks for joining our waitlist. We'll keep you updated on our launch and early access opportunities.
             </p>
           </motion.div>
@@ -90,10 +92,10 @@ const Waitlist = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-4">
+            <h2 className="text-3xl md:text-5xl font-display font-bold text-white mb-4">
                 Join the Waitlist
             </h2>
-            <p className="text-xl text-white/90 mb-8 font-display">
+            <p className="text-lg md:text-xl text-white/90 mb-8 font-display">
               Be the first to experience the future of thrift shopping
             </p>
           </motion.div>
@@ -112,7 +114,7 @@ const Waitlist = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email"
-                className="w-full px-6 py-4 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent backdrop-blur-sm"
+                className="w-full px-5 py-3 bg-white/10 border border-white/20 rounded-lg text-white text-base placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent backdrop-blur-sm"
               />
               {error && (
                 <p className="mt-2 text-red-400 text-sm">{error}</p>
@@ -121,7 +123,7 @@ const Waitlist = () => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className={`w-full border-2 border-white/30 text-white px-8 py-4 rounded-lg 
+              className={`w-full border-2 border-white/30 text-white px-7 py-3 rounded-lg text-base
                 transition-all duration-300 relative overflow-hidden group ${
                 isSubmitting 
                   ? 'opacity-75 cursor-not-allowed'
