@@ -143,7 +143,7 @@ const Home = () => {
             style={{
               background: 'transparent',
               position: 'absolute',
-              top: 0,
+              top: -150,
               left: 0,
               width: '100%',
               height: '100%'
