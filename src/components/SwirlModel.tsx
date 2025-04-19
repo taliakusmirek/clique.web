@@ -12,13 +12,16 @@ export function SwirlModel() {
   useEffect(() => {
     async function loadModel() {
       try {
+        // Update paths to use the full URL in production
+        const baseUrl = import.meta.env.PROD ? window.location.origin : '';
+        
         console.log('Starting model load...');
         
         // First load MTL
         const mtlLoader = new MTLLoader();
         const materials = await new Promise<MTLLoader.MaterialCreator>((resolve, reject) => {
           mtlLoader.load(
-            '/spiral.mtl',
+            `${baseUrl}/spiral.mtl`,
             resolve,
             undefined,
             reject
@@ -34,7 +37,7 @@ export function SwirlModel() {
         
         const obj = await new Promise<THREE.Group>((resolve, reject) => {
           objLoader.load(
-            '/spiral.obj',
+            `${baseUrl}/spiral.obj`,
             resolve,
             undefined,
             reject

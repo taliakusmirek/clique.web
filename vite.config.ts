@@ -27,7 +27,6 @@ export default defineConfig({
       output: {
         assetFileNames: 'assets/[name]-[hash][extname]',
       },
-      external: ['*.glb', '*.obj', '*.mtl'],
     },
   },
   server: {
