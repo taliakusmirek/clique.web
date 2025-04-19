@@ -12,9 +12,6 @@ export function SwirlModel() {
   useEffect(() => {
     async function loadModel() {
       try {
-        // Update paths to use the full URL in production
-        const baseUrl = import.meta.env.PROD ? window.location.origin : '';
-        
         console.log('Starting model load...');
         
         // First load MTL
