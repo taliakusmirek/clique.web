@@ -75,12 +75,12 @@ const pageContent: ContentType = {
   }
 };
 
-// Loading component
 function LoadingFallback() {
   return (
-    <div className="absolute inset-0 flex items-center justify-center text-[#f9ff81]">
-      Loading 3D Model...
-    </div>
+    <mesh>
+      <sphereGeometry args={[1, 16, 16]} />
+      <meshStandardMaterial color="#f9ff81" wireframe />
+    </mesh>
   );
 }
 
@@ -165,17 +165,15 @@ const Home = () => {
             }}
           >
             <Suspense fallback={<LoadingFallback />}>
-              <ambientLight intensity={0.5} />
-              <directionalLight position={[5, 5, 5]} intensity={1} />
               <SwirlModel />
-              <OrbitControls 
-                enableZoom={false}
-                enablePan={false}
-                rotateSpeed={0.5}
-                autoRotate={true}
-                autoRotateSpeed={2}
-              />
             </Suspense>
+            <OrbitControls 
+              enableZoom={false}
+              enablePan={false}
+              rotateSpeed={0.5}
+              autoRotate={true}
+              autoRotateSpeed={2}
+            />
           </Canvas>
         </div>
 
