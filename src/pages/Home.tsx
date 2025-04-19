@@ -2,7 +2,11 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
-import clothingVideo from '../assets/clothing.mp4';
+import purpleBackground from '../assets/purple.jpg';
+import { Canvas } from '@react-three/fiber';
+import { Suspense } from 'react';
+import { OrbitControls } from '@react-three/drei';
+import { SwirlModel } from '../components/SwirlModel';
 
 interface Benefit {
   icon: string;
@@ -114,62 +118,98 @@ const Home = () => {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Background Video with subtle overlay */}
-        <div className="absolute inset-0 bg-black">
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="absolute w-full h-full object-cover"
+        {/* Background */}
+        <div className="absolute inset-0">
+          <div 
+            className="absolute w-full h-full"
             style={{
-              objectPosition: 'center',
-              transform: 'scale(1.2)',
-              transformOrigin: 'center center'
+              backgroundImage: `url(${purpleBackground})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat',
+              transform: 'scale(1.05)',
+              transformOrigin: 'center center',
+              WebkitBackfaceVisibility: 'hidden',
+              backfaceVisibility: 'hidden'
             }}
-          >
-            <source src={clothingVideo} type="video/mp4" />
-          </video>
-          {/* Subtle dark overlay */}
-          <div className="absolute inset-0 bg-black/20" />
+          />
+          <div className="absolute inset-0 bg-gray-900/50" />
         </div>
 
-        {/* Content */}
-        <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+        {/* 3D Canvas Container */}
+        <div className="relative z-10 w-full h-[80vh]">
+          <Canvas
+            camera={{ position: [0, 0, 10], fov: 50 }}
+            style={{
+              background: 'transparent',
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              width: '100%',
+              height: '100%'
+            }}
+            gl={{
+              alpha: true,
+              antialias: true,
+              premultipliedAlpha: false,
+              preserveDrawingBuffer: false,
+            }}
+          >
+            <Suspense fallback={null}>
+              <ambientLight intensity={0.5} />
+              <directionalLight position={[5, 5, 5]} intensity={1} />
+              <SwirlModel />
+              <OrbitControls 
+                enableZoom={false}
+                enablePan={false}
+                rotateSpeed={0.5}
+                autoRotate={true}
+                autoRotateSpeed={2}
+              />
+            </Suspense>
+          </Canvas>
+        </div>
+
+        {/* Text Content */}
+        <div className="absolute z-20 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto" 
+             style={{ bottom: '10%' }}>
           <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             transition={{ duration: 0.8 }}
-            className="text-3xl md:text-5xl font-display font-bold text-white mb-6"
+            className="text-3xl md:text-5xl font-display font-bold mb-6"
+            style={{ color: '#f9ff81' }}
           >
             Try Before You Thrift,{' '}
             <br />
             Right From Your Phone
           </motion.h1>
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-lg md:text-xl text-white/90 mb-12 font-display"
+            className="text-lg md:text-xl mb-12 font-display"
+            style={{ color: '#f9ff81' }}
           >
-            Turn any thrift store into your fitting room with AI-powered <span className="hidden md:inline"><br /></span>
+            Turn any thrift store into your fitting room with AI-powered
+            <span className="hidden md:inline"><br /></span>
             try-on, quality checks, and price comparisons.
           </motion.p>
           
-          {/* Waitlist Button */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
             <Link 
               to="/waitlist" 
-              className="inline-block border-2 border-white/30 text-white px-8 py-3 rounded-full text-base font-medium 
-              transition-all duration-300 transform hover:-translate-y-1 relative overflow-hidden group"
+              className="inline-block border-2 border-[#f9ff81]/30 text-[#f9ff81] px-8 py-3 rounded-full 
+                text-base font-medium transition-all duration-300 transform hover:-translate-y-1 
+                relative overflow-hidden group"
             >
               <span className="relative z-10">Join the Waitlist</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-red-400/60 to-orange-500/60 opacity-0 
-                group-hover:opacity-80 transition-opacity duration-300" />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#f9ff81]/20 to-[#f9ff81]/30 
+                opacity-0 group-hover:opacity-80 transition-opacity duration-300" />
             </Link>
           </motion.div>
         </div>

@@ -21,7 +21,7 @@ const Navbar = () => {
           {/* Logo - Centered */}
           <div className="absolute left-1/2 transform -translate-x-1/2">
             <Link to="/" className="flex items-center">
-              <span className="text-2xl font-bold text-white">CLIQUE</span>
+              <span className="text-2xl font-bold text-[#f9ff81]">Clique</span>
             </Link>
           </div>
 
@@ -29,7 +29,7 @@ const Navbar = () => {
           <div className="md:hidden">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="text-white/80 hover:text-white transition-colors duration-200"
+              className="text-[#f9ff81]/80 hover:text-[#f9ff81] transition-colors duration-200"
             >
               <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 {isMobileMenuOpen ? (

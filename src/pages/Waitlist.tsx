@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import clothingVideo from '../assets/clothing.mp4';
+import purpleBackground from '../assets/purple.jpg';
 
 const Waitlist = () => {
   const [email, setEmail] = useState('');
@@ -34,107 +34,110 @@ const Waitlist = () => {
     }
   };
 
-  const VideoBackground = () => (
-    <div className="absolute inset-0 bg-black">
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        className="absolute w-full h-full object-cover"
+  const Background = () => (
+    <div className="absolute inset-0">
+      <div 
+        className="absolute w-full h-full"
         style={{
-          objectPosition: 'center',
-          transform: 'scale(1.2)',
-          transformOrigin: 'center center'
+          backgroundImage: `url(${purpleBackground})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          transform: 'scale(1.05)',
+          transformOrigin: 'center center',
+          WebkitBackfaceVisibility: 'hidden',
+          backfaceVisibility: 'hidden'
         }}
-      >
-        <source src={clothingVideo} type="video/mp4" />
-      </video>
-      {/* Subtle dark overlay */}
-      <div className="absolute inset-0 bg-black/20" />
+      />
+      <div className="absolute inset-0 bg-gray-900/50" />
     </div>
   );
 
   if (isSubmitted) {
     return (
-      <div className="min-h-screen relative">
-        <VideoBackground />
+      <div className="h-screen fixed inset-0 overflow-hidden">
+        <Background />
 
         {/* Success Message */}
-        <div className="relative z-10 min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="bg-white/10 backdrop-blur-md p-8 rounded-lg border border-white/20 max-w-md w-full text-center"
-          >
-            <div className="w-16 h-16 mx-auto mb-6 bg-red-500/20 rounded-full flex items-center justify-center">
-              <span className="text-3xl">✨</span>
-            </div>
-            <h2 className="text-2xl font-display font-bold text-white mb-4">Welcome to the Future!</h2>
-            <p className="text-base text-white/80">
-              Thanks for joining our waitlist. We'll keep you updated on our launch and early access opportunities.
-            </p>
-          </motion.div>
+        <div className="relative z-10 h-full overflow-auto">
+          <div className="flex items-center justify-center min-h-full px-4 sm:px-6 lg:px-8">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="bg-white/10 backdrop-blur-md p-8 rounded-lg border border-[#f9ff81]/20 max-w-md w-full text-center"
+            >
+              <div className="w-16 h-16 mx-auto mb-6 bg-[#f9ff81]/20 rounded-full flex items-center justify-center">
+                <span className="text-3xl">✨</span>
+              </div>
+              <h2 className="text-2xl font-display font-bold text-[#f9ff81] mb-4">Welcome to the Future!</h2>
+              <p className="text-[#f9ff81]/80">
+                Thanks for joining our waitlist. We'll keep you updated on our launch and early access opportunities.
+              </p>
+            </motion.div>
+          </div>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen relative">
-      <VideoBackground />
+    <div className="h-screen fixed inset-0 overflow-hidden">
+      <Background />
 
-      {/* Content */}
-      <div className="relative z-10 min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
-        <div className="max-w-xl w-full space-y-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <h2 className="text-3xl md:text-5xl font-display font-bold text-white mb-4">
-                Join the Waitlist
-            </h2>
-            <p className="text-lg md:text-xl text-white/90 mb-8 font-display">
-              Be the first to experience the future of thrift shopping
-            </p>
-          </motion.div>
-
-          <motion.form
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="space-y-4"
-            onSubmit={handleSubmit}
-          >
-            <div>
-              <input
-                type="email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter your email"
-                className="w-full px-5 py-3 bg-white/10 border border-white/20 rounded-lg text-white text-base placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent backdrop-blur-sm"
-              />
-              {error && (
-                <p className="mt-2 text-red-400 text-sm">{error}</p>
-              )}
-            </div>
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className={`w-full border-2 border-white/30 text-white px-7 py-3 rounded-lg text-base
-                transition-all duration-300 relative overflow-hidden group ${
-                isSubmitting 
-                  ? 'opacity-75 cursor-not-allowed'
-                  : 'hover:-translate-y-1'
-              }`}
+      {/* Content container with proper scrolling */}
+      <div className="relative z-10 h-full overflow-auto">
+        <div className="flex items-center justify-center min-h-full px-4 sm:px-6 lg:px-8">
+          <div className="max-w-xl w-full space-y-8 text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
             >
-              <span className="relative z-10">{isSubmitting ? 'Joining...' : 'Join Now'}</span>
-              <div className={`absolute inset-0 bg-gradient-to-r from-red-400/60 to-orange-500/60 opacity-0 
-                ${isSubmitting ? '' : 'group-hover:opacity-80'} transition-opacity duration-300`} />
-            </button>
-          </motion.form>
+              <h2 className="text-3xl md:text-5xl font-display font-bold text-[#f9ff81] mb-4">
+                  Join the Waitlist
+              </h2>
+              <p className="text-lg md:text-xl text-[#f9ff81]/90 mb-8 font-display">
+                Be the first to experience the future of thrift shopping
+              </p>
+            </motion.div>
+
+            <motion.form
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="space-y-4"
+              onSubmit={handleSubmit}
+            >
+              <div>
+                <input
+                  type="email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Enter your email"
+                  className="w-full px-5 py-3 bg-white/10 border border-[#f9ff81]/20 rounded-lg text-[#f9ff81] text-base 
+                    placeholder-[#f9ff81]/60 focus:outline-none focus:ring-2 focus:ring-[#f9ff81]/50 focus:border-transparent backdrop-blur-sm"
+                />
+                {error && (
+                  <p className="mt-2 text-red-400 text-sm">{error}</p>
+                )}
+              </div>
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className={`w-full border-2 border-[#f9ff81]/30 text-[#f9ff81] px-7 py-3 rounded-lg text-base
+                  transition-all duration-300 relative overflow-hidden group ${
+                  isSubmitting 
+                    ? 'opacity-75 cursor-not-allowed'
+                    : 'hover:-translate-y-1'
+                  }`}
+              >
+                <span className="relative z-10">{isSubmitting ? 'Joining...' : 'Join Now'}</span>
+                <div className={`absolute inset-0 bg-gradient-to-r from-[#f9ff81]/20 to-[#f9ff81]/30 opacity-0 
+                  ${isSubmitting ? '' : 'group-hover:opacity-80'} transition-opacity duration-300`} />
+              </button>
+            </motion.form>
+          </div>
         </div>
       </div>
     </div>
