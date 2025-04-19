@@ -21,7 +21,7 @@ export function SwirlModel() {
         const mtlLoader = new MTLLoader();
         const materials = await new Promise<MTLLoader.MaterialCreator>((resolve, reject) => {
           mtlLoader.load(
-            '/spiral.mtl',
+            import.meta.env.PROD ? '/spiral.mtl' : '/spiral.mtl',
             resolve,
             undefined,
             reject
@@ -37,7 +37,7 @@ export function SwirlModel() {
         
         const obj = await new Promise<THREE.Group>((resolve, reject) => {
           objLoader.load(
-            '/spiral.obj',
+            import.meta.env.PROD ? '/spiral.obj' : '/spiral.obj',
             resolve,
             undefined,
             reject

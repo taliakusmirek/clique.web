@@ -28,12 +28,13 @@ export default defineConfig({
         assetFileNames: (assetInfo) => {
           const extType = assetInfo.name?.split('.')[1];
           if (extType && /obj|mtl/i.test(extType)) {
-            return `assets/[name][extname]`;
+            return `[name][extname]`;
           }
           return `assets/[name]-[hash][extname]`;
         },
       },
     },
+    copyPublicDir: true,
   },
   server: {
     headers: {
