@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react';
+import { useRef } from 'react';
 import { useFrame, useLoader } from '@react-three/fiber';
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js'; // Note the .js extension
 import { MTLLoader } from 'three/examples/jsm/loaders/MTLLoader.js'; // Note the .js extension
