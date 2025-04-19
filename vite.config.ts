@@ -25,7 +25,13 @@ export default defineConfig({
   build: {
     rollupOptions: {
       output: {
-        assetFileNames: 'assets/[name]-[hash][extname]',
+        assetFileNames: (assetInfo) => {
+          const extType = assetInfo.name?.split('.')[1];
+          if (extType && /obj|mtl/i.test(extType)) {
+            return `assets/[name][extname]`;
+          }
+          return `assets/[name]-[hash][extname]`;
+        },
       },
     },
   },
