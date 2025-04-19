@@ -6,7 +6,7 @@ import purpleBackground from '../assets/purple.jpg';
 import { Canvas } from '@react-three/fiber';
 import { Suspense } from 'react';
 import { OrbitControls } from '@react-three/drei';
-import { SwirlModel } from './SwirlModel';
+import { SwirlModel } from '../components/SwirlModel';
 
 interface Benefit {
   icon: string;
