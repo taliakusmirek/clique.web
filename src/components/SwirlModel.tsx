@@ -1,9 +1,60 @@
-import { useRef } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { useFrame } from '@react-three/fiber';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import * as THREE from 'three';
 
 export function SwirlModel() {
   const groupRef = useRef<THREE.Group>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [model, setModel] = useState<THREE.Group | null>(null);
+
+  useEffect(() => {
+    async function loadModel() {
+      try {
+        console.log('Starting model load...');
+        
+        // Load GLB with absolute path
+        const gltfLoader = new GLTFLoader();
+        const modelPath = '/models/spiral.glb';
+        console.log('Loading model from:', window.location.origin + modelPath);
+        
+        const gltf = await new Promise<THREE.Group>((resolve, reject) => {
+          gltfLoader.load(
+            modelPath,
+            (gltf) => resolve(gltf.scene),
+            (progress) => console.log('Loading progress:', (progress.loaded / progress.total * 100) + '%'),
+            (error) => {
+              console.error('GLTF loading error:', error);
+              reject(error);
+            }
+          );
+        });
+
+        console.log('GLB loaded successfully');
+        
+        // Clone and setup the model
+        const loadedModel = gltf.clone();
+        loadedModel.traverse((child: THREE.Object3D) => {
+          if (child instanceof THREE.Mesh) {
+            child.material = new THREE.MeshStandardMaterial({
+              color: '#f9ff81',
+              metalness: 0.5,
+              roughness: 0.2,
+              emissive: '#f9ff81',
+              emissiveIntensity: 0.2,
+            });
+          }
+        });
+
+        setModel(loadedModel);
+      } catch (err) {
+        console.error('Detailed loading error:', err);
+        setError(err instanceof Error ? err.message : 'Unknown error loading model');
+      }
+    }
+
+    loadModel();
+  }, []);
 
   useFrame((_, delta) => {
     if (groupRef.current) {
@@ -12,18 +63,22 @@ export function SwirlModel() {
     }
   });
 
+  if (error) {
+    console.error('Model loading error:', error);
+    return null;
+  }
+
+  if (!model) {
+    return null;
+  }
+
   return (
     <group ref={groupRef}>
-      <mesh>
-        <torusGeometry args={[2, 0.5, 16, 100]} />
-        <meshStandardMaterial
-          color="#f9ff81"
-          metalness={0.5}
-          roughness={0.2}
-          emissive="#f9ff81"
-          emissiveIntensity={0.2}
-        />
-      </mesh>
+      <primitive 
+        object={model} 
+        scale={2}
+        position={[0, 0, 0]}
+      />
       <ambientLight intensity={1.5} />
       <directionalLight 
         position={[5, 5, 5]} 
