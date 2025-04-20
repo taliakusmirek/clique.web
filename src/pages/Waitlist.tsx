@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import purpleBackground from '../assets/purple.jpg';
 
 const Waitlist = () => {
   const [email, setEmail] = useState('');
@@ -34,33 +33,19 @@ const Waitlist = () => {
     }
   };
 
-  const Background = () => (
-    <div className="absolute inset-0">
-      <div 
-        className="absolute w-full h-full"
-        style={{
-          backgroundImage: `url(${purpleBackground})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-          transform: 'scale(1.05)',
-          transformOrigin: 'center center',
-          WebkitBackfaceVisibility: 'hidden',
-          backfaceVisibility: 'hidden'
-        }}
-      />
-      <div className="absolute inset-0 bg-gray-900/50" />
-    </div>
-  );
-
   if (isSubmitted) {
     return (
-      <div className="h-screen fixed inset-0 overflow-hidden">
-        <Background />
+      <div className="relative min-h-screen overflow-hidden flex items-center justify-center">
+        <div 
+          className="absolute inset-0 z-0"
+          style={{
+            background: 'linear-gradient(180deg, #A17BFF 0%, #6C4EE6 40%, #4C3398 90%)'
+          }}
+        />
 
         {/* Success Message */}
-        <div className="relative z-10 h-full overflow-auto">
-          <div className="flex items-center justify-center min-h-full px-4 sm:px-6 lg:px-8">
+        <div className="relative z-10 w-full">
+          <div className="flex items-center justify-center px-4 sm:px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -81,12 +66,17 @@ const Waitlist = () => {
   }
 
   return (
-    <div className="h-screen fixed inset-0 overflow-hidden">
-      <Background />
+    <div className="relative min-h-screen overflow-hidden flex items-center justify-center">
+      <div 
+        className="absolute inset-0 z-0"
+        style={{
+          background: 'linear-gradient(180deg, #A17BFF 0%, #6C4EE6 40%, #4C3398 90%)'
+        }}
+      />
 
       {/* Content container with proper scrolling */}
-      <div className="relative z-10 h-full overflow-auto">
-        <div className="flex items-center justify-center min-h-full px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 w-full">
+        <div className="flex items-center justify-center px-4 sm:px-6 lg:px-8">
           <div className="max-w-xl w-full space-y-8 text-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
