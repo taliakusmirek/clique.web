@@ -14,6 +14,14 @@ export default defineConfig({
         w: '1920',
       }),
     }),
+    {
+      name: 'obj-loader',
+      transform(code, id) {
+        if (id.endsWith('.obj')) {
+          return `export default ${JSON.stringify(code)}`;
+        }
+      }
+    }
   ],
   resolve: {
     alias: {
