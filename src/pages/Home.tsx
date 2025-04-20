@@ -2,7 +2,6 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
-import purpleBackground from '../assets/purple.jpg';
 import { Canvas } from '@react-three/fiber';
 import { Suspense } from 'react';
 import { OrbitControls } from '@react-three/drei';
