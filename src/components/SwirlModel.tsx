@@ -9,11 +9,13 @@ export function SwirlModel() {
 
   useEffect(() => {
     const loader = new GLTFLoader();
-    const modelPath = import.meta.env.BASE_URL + 'models/spiral.glb';
+    const modelPath = new URL('models/spiral.glb', window.location.href).href;
+    console.log('Attempting to load model from:', modelPath);
 
     loader.load(
       modelPath,
       (gltf) => {
+        console.log('Model loaded successfully:', gltf);
         const loadedModel = gltf.scene;
         loadedModel.traverse((child) => {
           if (child instanceof THREE.Mesh) {
@@ -29,10 +31,34 @@ export function SwirlModel() {
         setModel(loadedModel);
       },
       (progress) => {
-        console.log((progress.loaded / progress.total * 100) + '% loaded');
+        const percentComplete = (progress.loaded / progress.total) * 100;
+        console.log(`Loading progress: ${percentComplete.toFixed(2)}%`);
       },
-      (error) => {
-        console.error('Error loading model:', error);
+      (err: unknown) => {
+        const error = err as Error;
+        console.error('Error loading model:', {
+          message: error.message,
+          stack: error.stack,
+          modelPath
+        });
+        
+        fetch(modelPath)
+          .then(response => {
+            console.log('Fetch response:', {
+              status: response.status,
+              statusText: response.statusText,
+              headers: Object.fromEntries(response.headers.entries())
+            });
+            return response.text();
+          })
+          .then(text => {
+            if (text.startsWith('<!DOCTYPE')) {
+              console.error('Received HTML instead of GLB file. First 100 chars:', text.substring(0, 100));
+            }
+          })
+          .catch(fetchError => {
+            console.error('Fetch error:', fetchError);
+          });
       }
     );
   }, []);

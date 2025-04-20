@@ -29,17 +29,20 @@ export default defineConfig({
       '@assets': path.resolve(process.cwd(), './src/assets'),
     },
   },
-  assetsInclude: ['**/*.png', '**/*.jpg', '**/*.jpeg', '**/*.gif', '**/*.svg', '**/*.glb', '**/*.obj', '**/*.mtl'],
+  assetsInclude: ['**/*.glb', '**/*.gltf', '**/*.obj', '**/*.mtl'],
   build: {
+    outDir: 'dist',
+    assetsDir: 'assets',
     rollupOptions: {
       output: {
         assetFileNames: (assetInfo) => {
           if (!assetInfo.name) return 'assets/[name]-[hash][extname]';
           
-          const extType = assetInfo.name.split('.').pop()?.toLowerCase();
-          if (extType === 'glb' || extType === 'obj' || extType === 'mtl') {
-            // Preserve original names for 3D model files
-            return `models/[name][extname]`;
+          // Keep original file structure for 3D models
+          if (assetInfo.name.match(/\.(glb|gltf|obj|mtl)$/)) {
+            // Remove 'public/' from the path if it exists
+            const path = assetInfo.name.replace(/^public\//, '');
+            return path;
           }
           return 'assets/[name]-[hash][extname]';
         },
