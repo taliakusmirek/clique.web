@@ -35,7 +35,7 @@ export default defineConfig({
       output: {
         assetFileNames: (assetInfo) => {
           const extType = assetInfo.name?.split('.')[1];
-          if (extType && /obj|mtl/i.test(extType)) {
+          if (extType && /glb|obj|mtl/i.test(extType)) {
             return `[name][extname]`;
           }
           return `assets/[name]-[hash][extname]`;
@@ -49,5 +49,5 @@ export default defineConfig({
       'Access-Control-Allow-Origin': '*',
     },
   },
-  base: './',
+  base: '/',
 })

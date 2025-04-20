@@ -18,10 +18,13 @@ export function SwirlModel() {
         
         const gltf = await new Promise<THREE.Group>((resolve, reject) => {
           gltfLoader.load(
-            '/models/spiral.glb',
+            `${window.location.origin}/models/spiral.glb`,
             (gltf) => resolve(gltf.scene),
-            undefined,
-            reject
+            (progress) => console.log('Loading progress:', progress),
+            (error) => {
+              console.error('GLTF loading error:', error);
+              reject(error);
+            }
           );
         });
 
