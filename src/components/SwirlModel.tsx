@@ -9,8 +9,12 @@ export function SwirlModel() {
 
   useEffect(() => {
     const loader = new GLTFLoader();
-    const modelPath = new URL('models/spiral.glb', window.location.href).href;
-    console.log('Attempting to load model from:', modelPath);
+    // Construct path relative to the base URL
+    const modelPath = import.meta.env.DEV 
+      ? '/models/spiral.glb'  // Development path
+      : `${import.meta.env.BASE_URL}models/spiral.glb`; // Production path
+    
+    console.log('Attempting to load model from:', new URL(modelPath, window.location.origin).href);
 
     loader.load(
       modelPath,
@@ -35,25 +39,31 @@ export function SwirlModel() {
         console.log(`Loading progress: ${percentComplete.toFixed(2)}%`);
       },
       (err: unknown) => {
+        // More detailed error logging
         const error = err as Error;
         console.error('Error loading model:', {
           message: error.message,
           stack: error.stack,
-          modelPath
+          modelPath,
+          fullUrl: new URL(modelPath, window.location.origin).href
         });
         
+        // Try to fetch the URL directly to see what response we get
         fetch(modelPath)
           .then(response => {
             console.log('Fetch response:', {
               status: response.status,
               statusText: response.statusText,
-              headers: Object.fromEntries(response.headers.entries())
+              headers: Object.fromEntries(response.headers.entries()),
+              url: response.url
             });
             return response.text();
           })
           .then(text => {
             if (text.startsWith('<!DOCTYPE')) {
               console.error('Received HTML instead of GLB file. First 100 chars:', text.substring(0, 100));
+            } else {
+              console.log('Response content type:', text.slice(0, 20));
             }
           })
           .catch(fetchError => {
