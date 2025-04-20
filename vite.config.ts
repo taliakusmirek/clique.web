@@ -38,14 +38,11 @@ export default defineConfig({
         assetFileNames: (assetInfo) => {
           if (!assetInfo.name) return 'assets/[name]-[hash][extname]';
           
-          // Keep original file structure for 3D models
+          // Special handling for 3D model files
           if (assetInfo.name.match(/\.(glb|gltf|obj|mtl)$/)) {
-            // Preserve the models directory structure
-            const fileName = assetInfo.name;
-            if (fileName.includes('models/')) {
-              return fileName;
-            }
-            return `models/${path.basename(fileName)}`;
+            // Ensure files from public/models go to the correct location
+            const fileName = assetInfo.name.replace(/^public[\\/]/, '');
+            return fileName;
           }
           return 'assets/[name]-[hash][extname]';
         },
