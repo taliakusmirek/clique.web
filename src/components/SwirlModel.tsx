@@ -18,7 +18,7 @@ export function SwirlModel() {
         
         const obj = await new Promise<THREE.Group>((resolve, reject) => {
           objLoader.load(
-            '/models/spiral.obj',
+            import.meta.env.PROD ? './models/spiral.obj' : '/models/spiral.obj',
             resolve,
             undefined,
             reject
