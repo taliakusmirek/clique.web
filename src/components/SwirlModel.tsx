@@ -1,6 +1,6 @@
 import { useRef, useEffect, useState } from 'react';
 import { useFrame } from '@react-three/fiber';
-import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import * as THREE from 'three';
 
 export function SwirlModel() {
@@ -13,22 +13,22 @@ export function SwirlModel() {
       try {
         console.log('Starting model load...');
         
-        // Load OBJ directly
-        const objLoader = new OBJLoader();
+        // Load GLB
+        const gltfLoader = new GLTFLoader();
         
-        const obj = await new Promise<THREE.Group>((resolve, reject) => {
-          objLoader.load(
-            import.meta.env.PROD ? './models/spiral.obj' : '/models/spiral.obj',
-            resolve,
+        const gltf = await new Promise<THREE.Group>((resolve, reject) => {
+          gltfLoader.load(
+            '/models/spiral.glb',
+            (gltf) => resolve(gltf.scene),
             undefined,
             reject
           );
         });
 
-        console.log('OBJ loaded successfully');
+        console.log('GLB loaded successfully');
         
         // Clone and setup the model
-        const loadedModel = obj.clone();
+        const loadedModel = gltf.clone();
         loadedModel.traverse((child: THREE.Object3D) => {
           if (child instanceof THREE.Mesh) {
             child.material = new THREE.MeshStandardMaterial({
