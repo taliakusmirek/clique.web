@@ -1,40 +1,21 @@
 import { useRef, useEffect, useState } from 'react';
 import { useFrame } from '@react-three/fiber';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import * as THREE from 'three';
 
 export function SwirlModel() {
   const groupRef = useRef<THREE.Group>(null);
-  const [error, setError] = useState<string | null>(null);
   const [model, setModel] = useState<THREE.Group | null>(null);
 
   useEffect(() => {
-    async function loadModel() {
-      try {
-        console.log('Starting model load...');
-        
-        // Load GLB with absolute path
-        const gltfLoader = new GLTFLoader();
-        const modelPath = '/models/spiral.glb';
-        console.log('Loading model from:', window.location.origin + modelPath);
-        
-        const gltf = await new Promise<THREE.Group>((resolve, reject) => {
-          gltfLoader.load(
-            modelPath,
-            (gltf) => resolve(gltf.scene),
-            (progress) => console.log('Loading progress:', (progress.loaded / progress.total * 100) + '%'),
-            (error) => {
-              console.error('GLTF loading error:', error);
-              reject(error);
-            }
-          );
-        });
+    const loader = new GLTFLoader();
+    const modelPath = import.meta.env.BASE_URL + 'models/spiral.glb';
 
-        console.log('GLB loaded successfully');
-        
-        // Clone and setup the model
-        const loadedModel = gltf.clone();
-        loadedModel.traverse((child: THREE.Object3D) => {
+    loader.load(
+      modelPath,
+      (gltf) => {
+        const loadedModel = gltf.scene;
+        loadedModel.traverse((child) => {
           if (child instanceof THREE.Mesh) {
             child.material = new THREE.MeshStandardMaterial({
               color: '#f9ff81',
@@ -45,15 +26,15 @@ export function SwirlModel() {
             });
           }
         });
-
         setModel(loadedModel);
-      } catch (err) {
-        console.error('Detailed loading error:', err);
-        setError(err instanceof Error ? err.message : 'Unknown error loading model');
+      },
+      (progress) => {
+        console.log((progress.loaded / progress.total * 100) + '% loaded');
+      },
+      (error) => {
+        console.error('Error loading model:', error);
       }
-    }
-
-    loadModel();
+    );
   }, []);
 
   useFrame((_, delta) => {
@@ -62,11 +43,6 @@ export function SwirlModel() {
       groupRef.current.rotation.z += delta * 0.3;
     }
   });
-
-  if (error) {
-    console.error('Model loading error:', error);
-    return null;
-  }
 
   if (!model) {
     return null;

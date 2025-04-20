@@ -34,11 +34,14 @@ export default defineConfig({
     rollupOptions: {
       output: {
         assetFileNames: (assetInfo) => {
-          const extType = assetInfo.name?.split('.')[1];
-          if (extType && /glb|obj|mtl/i.test(extType)) {
-            return `[name][extname]`;
+          if (!assetInfo.name) return 'assets/[name]-[hash][extname]';
+          
+          const extType = assetInfo.name.split('.').pop()?.toLowerCase();
+          if (extType === 'glb' || extType === 'obj' || extType === 'mtl') {
+            // Preserve original names for 3D model files
+            return `models/[name][extname]`;
           }
-          return `assets/[name]-[hash][extname]`;
+          return 'assets/[name]-[hash][extname]';
         },
       },
     },
@@ -50,4 +53,5 @@ export default defineConfig({
     },
   },
   base: '/',
+  publicDir: 'public',
 })
